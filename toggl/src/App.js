@@ -1,13 +1,11 @@
 
 import './App.css';
-import { Timer } from './Components/Timer/Timer';
-import { Sidebar } from './Compo/sidebar';
+import { Routes } from './Routes/Router';
 
 function App() {
   return (
     <div className="App">
-      <Timer/>   
-      <Sidebar/>
+      <Routes/>
     </div>
   );
 }
