@@ -1,0 +1,75 @@
+#myVideo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 100vw;
+    min-height: 100%;
+    z-index: -1;
+    filter: grayscale(40%);
+    filter: brightness(50%);
+    margin-left: 95px;
+}
+
+.contentTextHome > #contentHead {
+    margin-left: 95px;
+    position: absolute;
+    top: 210px;
+    left: 50px;
+    color: #FFF3ED;
+    font-size: 75px;
+    font-weight: bold;
+    width: 750px;
+    text-align: left;
+  }
+.contentTextHome > #contentHead > em {
+    color: #E57CD8;
+}
+.contentTextHome > #contentHeadPara {
+    position: absolute;
+    top: 510px;
+    left: 50px;
+    color: #FFF3ED;
+    font-size: 30px;
+    width: 650px;
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 95px;
+}
+.contentTextHome > #contentHeadGetStarted > button{
+    position: absolute;
+    top: 610px;
+    left: 50px;
+    color: #f1f1f1;
+    background-color: #E57CD8;
+    padding: 15.5px 45px;
+    border-radius: 26px;
+    font-size: 17px;
+    text-align: left;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    margin-left: 95px;
+}
+.contentTextHome > #contentHeadGetStarted > button:hover{
+    background-color: rgb(65, 42, 76);
+}
+.contentTextHome > #contentHeadGetStarted > span{
+    position: absolute;
+    top: 610px;
+    left: 270px;
+    color: #FFF3ED;
+    padding: 15.5px 45px;
+    font-weight: bold;
+    font-size: 17px;
+    text-align: left;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    margin-left: 95px;
+}
+.contentTextHome > #contentHeadGetStarted > span:hover{
+    color: #E57CD8;
+}
+.contentTextHome > #contentHeadGetStarted > span > span{
+    padding-left: 5px;
+}
