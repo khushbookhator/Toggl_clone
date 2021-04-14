@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+}
+.container>:nth-child(1){
+    padding: 0px 20px;
+}
+.container>:nth-child(2) *{
+    margin-top: 12px;
+}
