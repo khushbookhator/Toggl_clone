@@ -1,0 +1,33 @@
+.cont {
+    width:13%;
+    background-color: rgb(44,19,56);
+    height:730px;
+    padding:2px;
+    padding-left: 20px;
+}
+.panel {
+    display: flex;
+    gap:20px
+}
+.icons {
+    width:20px;
+    height:20px
+}
+.cont > p {
+    color: rgb(101,81,109);
+    font-size: 15px;
+    font-weight: bolder;
+}
+.links {
+    color: rgb(198,174,177);
+    text-decoration: none;
+    margin-left: 10%;
+    font-weight: bolder;
+}
+.outer {
+    padding: 5px
+}
+.links:hover{
+    color: white
+}
+
