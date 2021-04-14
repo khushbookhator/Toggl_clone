@@ -1,0 +1,52 @@
+.main{
+    background-color: #412A4C;
+    margin-top: 96vh;
+}
+.headd{
+    padding-top: 100px;
+    font-size: 60px;
+    color: #FFF3ED;
+}
+.headdPara{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 28%;
+    padding-right: 28%;
+    font-size: 18px;
+    color: #FFF3ED;
+}
+.headdImgFlex{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 70px;
+}
+.headdParaFlex{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+.headdParaFlex > div{
+    color: #FFF3ED;
+    margin: 0px 60px;
+    font-size: 18px;
+}
+.headdParaFlex > div > strong{
+    color: #FCE5D8;
+}
+.headdParaFlex > div > p{
+    color: #E57CD8;
+    margin: 23px 60px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.headdParaFlex > div > p:hover{
+    color: #FCE5D8;
+}
+#tediImg{
+    width: 100vw;
+}
+#tediImg > img{
+    width: 100%;
+    height: auto;
+}

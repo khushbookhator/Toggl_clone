@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router";
 import { Dashboard } from "../Compo/Dashboard";
-import { Sidebar } from "../Compo/sidebar";
+import { Home } from "../Components/Home/Home";
 
 
 function Routes() {
@@ -8,7 +8,7 @@ function Routes() {
         <>
             <Switch>
                 <Route exact path="/">
-                    <h1>LANDING PAGE</h1>
+                    <Home/>
                 </Route>
                 <Route path="/timer">
                     <Dashboard/>
