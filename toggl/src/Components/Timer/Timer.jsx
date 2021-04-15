@@ -23,6 +23,7 @@ function  getModalStyle() {
   };
 }
 
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
@@ -33,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
+    const payload = {
+        title: text
+    }
+
+
 
 
 export const Timer=()=>{
@@ -120,7 +126,7 @@ export const Timer=()=>{
                     <StopWatch/>
                 </div>
             </div>
-           
+
 
 
         </div>
