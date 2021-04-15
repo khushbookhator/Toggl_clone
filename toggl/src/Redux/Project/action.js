@@ -1,20 +1,20 @@
 
 import axios from 'axios';
-import { GET_PROJECT_SUCCESS, GET_PORJECT_FAILURE, GET_PROJECT_REQ, POST_PROJECT_FAILURE, POST_PROJECT_SUCCESS, POST_PROJECT_REQ } from './actiontype';
+import { GET_PROJECT_SUCCESS, GET_PROJECT_FAILURE, GET_PROJECT_REQ, POST_PROJECT_FAILURE, POST_PROJECT_SUCCESS, POST_PROJECT_REQ } from './actiontype';
 
 const { REACT_APP_BASE_URL } = process.env;
 
-export const getProjectSuccess = data => {
+export const getProjectSuccess = payload => {
     return{
         type: GET_PROJECT_SUCCESS,
-        data
+        payload
     }
 }
 
 export const getProjectFailure= err => {
     return{
-        type: GET_PORJECT_FAILURE,
-        data: err
+        type: GET_PROJECT_FAILURE,
+        payload: err
     }
     
 }
@@ -50,9 +50,9 @@ export const postProjectReq = () => {
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
-export const postProject = (data) => (dispatch) => {
+export const postProject = (payload) => (dispatch) => {
     dispatch(postProjectReq())
-    return axios.post(`${REACT_APP_BASE_URL}/project`, data, {
+    return axios.post(`${REACT_APP_BASE_URL}/project`, payload, {
         headers: {
             "Content-Type": "application/json"
         }
