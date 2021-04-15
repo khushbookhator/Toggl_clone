@@ -1,0 +1,77 @@
+.first{
+    background-color: white;
+    height:60px;
+    display: flex;
+    padding:5px 15px ;
+    justify-content: space-between;
+    color: rgb(103,85,111);
+    
+}
+.first > button{
+    width:11%;
+    margin-top: 8px;
+    background-color: rgb(221,111,209);
+    color: white;
+    font-size: 16px;
+    height:40px;
+    outline: none;
+    border:none;
+    border-radius: 8px;
+}
+.second {
+    display: flex;
+    gap:20px;
+    height:40px;
+    padding:8px;
+    border: 0.5px solid rgb(232,232,232);
+    background-color: white;
+    box-shadow: 10px rgb(232,232,232);
+    color:rgb(103,85,111);
+}
+.second > select {
+    border: 1px solid gray;
+    height:40px;
+    border-radius: 5px;
+    width:10%;
+    padding:10px;
+    color: grey;
+}
+.second > p {
+    color: grey;
+    margin-top: 8px;
+}
+.second > button {
+    background-color: white;
+    height:40px;
+    border-radius: 5px;
+    color: grey;
+    margin-top: 2px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+.second > button:hover{
+    background-color: rgb(245,243,245);
+}
+.cont {
+    width:90%;
+    background-color: rgb(254,249,248);
+}
+.imgs {
+    width:15px;
+    height:15px;
+    margin-right: 10px;
+}   
+
+.third {
+ background-color: white;
+
+}
+.bulk {
+    background-color: white;
+    height:35px;
+    color: grey;
+    border-radius: 5px;
+    border: 1px solid grey;
+    width: 8%;
+}

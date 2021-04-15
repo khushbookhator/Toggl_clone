@@ -4,6 +4,7 @@
     height:730px;
     padding:2px;
     padding-left: 20px;
+    text-align: left;
 }
 .panel {
     display: flex;

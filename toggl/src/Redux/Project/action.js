@@ -24,6 +24,8 @@ export const getProjectReq = () => {
         type: GET_PROJECT_REQ,
     }
 }
+/////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
 export const postProjectSuccess = data => {
     return{
@@ -45,11 +47,12 @@ export const postProjectReq = () => {
         type: POST_PROJECT_REQ,
     }
 }
-
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 
 export const postProject = (data) => (dispatch) => {
     dispatch(postProjectReq())
-    return axios.post(`${REACT_APP_BASE_URL}`, data, {
+    return axios.post(`${REACT_APP_BASE_URL}/project`, data, {
         headers: {
             "Content-Type": "application/json"
         }
@@ -59,7 +62,7 @@ export const postProject = (data) => (dispatch) => {
 
 export const getProject = () => (dispatch) => {
     dispatch(getProjectReq())
-    return axios.get(`${REACT_APP_BASE_URL}`)
+    return axios.get(`${REACT_APP_BASE_URL}/project`)
     .then((res) => dispatch(getProjectSuccess(res.data)))
 }
 
