@@ -6,7 +6,7 @@ import featuresVideoHomeStyles from './FeaturesVideoHome.module.css';
 
 export const FeaturesVideoHome = () => {
     return (
-        <div>
+        <div style={{height:"187vw", width:"100vw"}}>
             <div className={featuresVideoHomeStyles.mainn}>
                 <img src={backgroundFeatureHome} alt="preview" />
             </div>

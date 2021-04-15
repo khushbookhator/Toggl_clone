@@ -1,0 +1,14 @@
+.mainCont{
+    width: 100vw;
+    position: absolute;
+}
+.mainCont > img{
+    width: 100%;
+    height: auto;
+}
+.mainContCheck{
+    position: relative;
+    top: 23vw;
+    left: 3vw;
+    color: #FCE5D8;
+}
