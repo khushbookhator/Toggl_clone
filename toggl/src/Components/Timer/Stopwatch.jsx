@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useDispatch } from "react-redux"
 import { postTask , getTask} from "../../Redux/Title/action"
+import { getTime } from "../../Utils/timeFormat"
 import stylesStopwatch from "./stopwatch.module.css"
 
 export const StopWatch=({title, projname})=>{
@@ -34,12 +35,7 @@ export const StopWatch=({title, projname})=>{
             setStatus(true)
         }
     },[window.onload])
-    const getTime=(seconds)=>{
-        const sec = seconds % 60;
-        const min = Math.floor(seconds/60)%60;
-        const hrs = Math.floor(seconds/(60*60))
-        return `${hrs} : ${min>9?min:"0"+min} : ${sec>9?sec:"0"+sec}`
-    }
+    
     
     const dispatch = useDispatch()
     
@@ -60,7 +56,7 @@ export const StopWatch=({title, projname})=>{
             date : date,
             start_time: localStorage.getItem("startTime"),
             end_time:localStorage.getItem("endTime"),
-            total_time: localStorage.getItem("totalTime"),
+            total_time: JSON.parse(localStorage.getItem("totalTime")),
             project_name: projname,
             subtitle: [
                 {
@@ -71,9 +67,6 @@ export const StopWatch=({title, projname})=>{
         }
         dispatch(postTask(payload)).then(dispatch(getTask()))
     }
-    React.useEffect(() => {
-        dispatch(getTask())
-    },[handleReset])
     return(
         <div className={stylesStopwatch.container}>
             <h3>{getTime(time)}</h3>
