@@ -7,11 +7,9 @@
     z-index: -1;
     filter: grayscale(40%);
     filter: brightness(50%);
-    margin-left: 95px;
 }
 
 .contentTextHome > #contentHead {
-    margin-left: 95px;
     position: absolute;
     top: 210px;
     left: 50px;
@@ -33,7 +31,6 @@
     width: 650px;
     text-align: left;
     margin-top: 30px;
-    margin-left: 95px;
 }
 .contentTextHome > #contentHeadGetStarted > button{
     position: absolute;
@@ -48,7 +45,6 @@
     margin-top: 30px;
     border: none;
     cursor: pointer;
-    margin-left: 95px;
 }
 .contentTextHome > #contentHeadGetStarted > button:hover{
     background-color: rgb(65, 42, 76);
@@ -65,7 +61,6 @@
     margin-top: 30px;
     border: none;
     cursor: pointer;
-    margin-left: 95px;
 }
 .contentTextHome > #contentHeadGetStarted > span:hover{
     color: #E57CD8;
