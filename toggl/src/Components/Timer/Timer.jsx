@@ -11,6 +11,7 @@ import { useDispatch , useSelector} from "react-redux";
 import { getProject, postProject } from './../../Redux/Project/action';
 import { TimerData } from "./TimerData";
 import { getTask } from "../../Redux/Title/action";
+import { getTime } from "../../Utils/timeFormat";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -74,12 +75,12 @@ export const Timer=()=>{
             team:"ayush"
         }
         dispatch(postProject(payload)).then(() => dispatch(getProject()))
-        
         handleClose()
-        
     }
+    const task = useSelector(state=> state.tasks.task)
+
+    console.log()
     
-    const task = useSelector(state=> state.tasks)
     React.useEffect(() => {
         dispatch(getProject())
         dispatch(getTask())
@@ -162,11 +163,11 @@ export const Timer=()=>{
                     <StopWatch title={text} projname = {dummy}/>
                 </div>
             </div>
-            <div>
+            <div className={timerstyles.dayPart}>
                 <h6>TODAY</h6>
                 <p>
                     {
-                        task.total_time.reduce((a.b) => a+b)
+                        getTime(task.reduce((acc, b) => acc + b.total_time, 0))
                     }
                 </p>
             </div>
