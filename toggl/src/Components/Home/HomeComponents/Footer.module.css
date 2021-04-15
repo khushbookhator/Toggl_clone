@@ -60,3 +60,38 @@
     margin: 18px;
     cursor: pointer;
 }
+.pinkky{
+    background-color: #E57CD8;
+    text-align: left;
+    font-size: 15px;
+    padding: 18px;
+    padding-left: 55px;
+}
+#beauty{
+    color: #FFF3ED;
+    position: relative;
+    display: inline-block;
+    top: 5vw;
+    cursor: pointer;
+    right: 14vw;
+}
+#beauty:hover{
+    color: #A876F5;
+}
+#intell:hover{
+    color: #FF8A7A;
+}
+#intell{
+    color: #FFF3ED;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    top: 5vw;
+    right: 10vw;
+}
+.discImg{
+    position: absolute;
+}
+.outerDisc{
+    height: 9vw;
+}
