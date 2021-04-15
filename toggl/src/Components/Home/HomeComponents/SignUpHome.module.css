@@ -1,0 +1,88 @@
+.mainCont{
+    width: 100vw;
+    position: absolute;
+}
+.mainCont > img{
+    width: 100%;
+    height: auto;
+}
+.mainContCheck{
+    position: relative;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    top: 23vw;
+    left: 13vw;
+    color: #FCE5D8;
+}
+.mainContCheck > label{
+    font-size: 19px;
+    margin-left: 20px;
+}
+.mainContCheck > label > span{
+    border-bottom: 1px solid #E57CD8;
+    cursor: pointer;
+    font-weight: 400;
+}
+.mainContCheck > label > span:hover{
+    color: #E57CD8;
+}
+.mainContCheck > input[type="checkbox"]{
+    font-size: 20px;
+    height: 30px;
+    content: '';
+    width: 30px;
+}
+.sinupBtnHome{
+    position: relative;
+    text-align: left;
+    align-items: center;
+    display: flex;
+    margin-top: 20px;
+    top: 25vw;
+    left: 13vw;
+    color: #FCE5D8;
+}
+.sinupBtnEmail, .talkToSales{
+    position: relative;
+    text-align: left;
+    align-items: center;
+    display: flex;
+    margin-top: 20px;
+    top: 25.5vw;
+    left: 13vw;
+    color: #FCE5D8;
+}
+.sinupBtnHome > button, .sinupBtnEmail > button, .talkToSales > button{
+    background-color: #fff;
+    padding: 10px 25px;
+    border-radius: 23px;
+    font-size: 15.5px;
+    font-weight: bold;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.sinupBtnEmail > button{
+    padding: 10px 11vw;
+}
+.sinupBtnHome > button:hover, .sinupBtnEmail > button:hover{
+    background-color: #FFF3ED;
+}
+.sinupBtnHome > button:first-child{
+    margin-right: 20px;
+}
+.talkToSales{
+    top: 31vw;
+    left: 60vw;
+}
+.talkToSales > button{
+    padding: 16px 50px;
+    background-color: #E57CD8;
+    color: #fff;
+    border-radius: 28px;
+}
+.talkToSales > button:hover{
+    background-color: #564260;
+}

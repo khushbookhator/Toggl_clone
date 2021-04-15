@@ -8,13 +8,13 @@
 }
 #pupleReadMore{
     position: relative;
-    top: 582px;
-    left: 96px;
+    top: 45vw;
+    left: 8vw;
 }
 #orangeReadMore{
     position: relative;
-    top: 773px;
-    right: 414px;
+    top: 61vw;
+    right: 32.5vw;
 }
 #pupleReadMore > span , #orangeReadMore > span{
     font-weight: bold;
@@ -25,8 +25,8 @@
 }
 #startTracking{
     position: relative;
-    top: 1195px;
-    left: 502px;
+    top: 93.5vw;
+    left: 39.5vw;
     width: fit-content;
 }
 #startTracking > button{
@@ -43,8 +43,8 @@
 }
 #startTrackingOrRead{
     position: relative;
-    top: 1214px;
-    left: 511px;
+    top: 95vw;
+    left: 40vw;
     width: fit-content;
 }
 #startTrackingOrRead > button{
@@ -60,8 +60,8 @@
 }
 #watch1min{
     position: relative;
-    top: 1741px;
-    left: 634px;
+    top: 136.5vw;
+    left: 49.6vw;
     width: fit-content;
 }
 #watch1min > button{
