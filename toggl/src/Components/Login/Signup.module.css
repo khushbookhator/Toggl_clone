@@ -105,6 +105,23 @@ button:hover{
     line-height: 1;
     font-size: 70px;
     color: white;
-     
+  }
 
+  .btn{
+      width: 150px;
+      font-family: 'GT Haptik Medium',sans-serif;
+      font-size: 1rem;
+      padding: 14px 50px;
+      background-color: #E57CD8;
+      color: #FFF;
+      text-align: center;
+      border-radius: 25px;
+      font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.28;
+  }
+  .googleimg{
+      width:20px;
+      height: 20px;
+     
   }

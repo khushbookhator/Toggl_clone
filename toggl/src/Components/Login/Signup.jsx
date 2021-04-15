@@ -1,26 +1,31 @@
 import React, { useState } from 'react'
 import signstyles from '../CSS/Signup.module.css'
-import auth from '../firebase'
+import   {auth ,google}from '../firebase'
  
 function Signup(){
 
      
     const [password, setPassword] = useState("null");
     const [email, setEmail] = useState("null");
-     
     const [isHidden, setisHiddden] = useState(false);
 
-  // const   onSubmit = () =>{
-     // var provider = new firebase.auth.GoogleAuthProvider();
-     
-   //}
    
+   function googlesignup(){
+auth.signInWithPopup(google)
+.then( resp =>
+  {
+    return console.log(resp.email.displayEmail),
+    setEmail(resp.user.displayEmail),
+    setPassword(resp.user.password)
+  }
+)
+.catch((err)=> console.log(err))
+}
      
+   
 
      async function  Register()
       {
-       
-
         auth.createUserWithEmailAndPassword(email, password)
 
           .then(function (response) {
@@ -28,9 +33,7 @@ function Signup(){
           })
           .catch(function (error) {
             console.log(error);
-          })
-          
-          
+          })  
       }
      
     return(       
@@ -45,14 +48,15 @@ function Signup(){
             <div className={signstyles.body}> 
              <div className={signstyles.main}>
              <form>
-               <button className={signstyles.google}  onClick={Register}> Signup via Google</button>
+               <button className={signstyles.google}  onClick={googlesignup}> <img className={signstyles.googleimg} src="https://img.icons8.com/color/452/google-logo.png" alt="google"/>Signup via Google</button>
+               <button className={signstyles.google}> <img className={signstyles.googleimg} src="https://cdn.iconscout.com/icon/free/png-256/apple-853-675472.png" alt="apple"/> Sign up via Apple</button>
             <div>
-            <input   type="checkbox" id="terms"  name="terms" value="terms" />
+            <input    type="checkbox" id="terms"  name="terms" value="terms" />
             <label for="terms">I agree to the terms of service and privacy policy.</label>
             </div>
           
-            <button type="button" onClick={()=>setisHiddden(!isHidden)}>TOGGLE</button>
-            <div id="hideDiv" className={isHidden?signstyles.hidden:""}>
+            <button type="button" onClick={()=>setisHiddden(!isHidden)}> <img className={signstyles.googleimg} src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-email-512.png" alt="email"/>Sign up via Email</button>
+            <div id="hideDiv" className={isHidden?signstyles.hidden:""}> 
          <div>
           <label>Email </label><br/>
         <input type="text" placeholder="Email"  onChange={(e)=> setEmail(e.target.value)}/> 
@@ -70,7 +74,8 @@ function Signup(){
        </form>
 
        </div>
-        
+          <label style={{color:"white"}} >Have an Account already?</label><br/>
+          <button className={signstyles.btn}>Login</button>
         </div>
        
 

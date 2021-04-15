@@ -13,6 +13,9 @@ import firebase from 'firebase/app'
   // Initialize Firebase
   const app = firebase.initializeApp(firebaseConfig);
   const auth = app.auth()
- 
+ const google = new firebase.auth.GoogleAuthProvider()
 
-  export  default auth
+  export  { auth, google}
+
+
+
