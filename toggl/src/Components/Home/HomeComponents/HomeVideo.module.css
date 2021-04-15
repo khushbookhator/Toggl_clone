@@ -1,7 +1,7 @@
 #myVideo {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 10px;
     min-width: 100vw;
     min-height: 100%;
     z-index: -1;
