@@ -7,7 +7,7 @@ import { FeaturesVideoHome } from './HomeComponents/FeaturesVideoHome'
 
 export const Home = () => {
     return (
-        <div style={{minHeight:"100vh", minWidth:"100vw", marginLeft:"95px"}}>
+        <div style={{minHeight:"100vh", minWidth:"100vw"}}>
             <Navbar/>
             <HomeVideo/>
             <TimeIsMoney/>
