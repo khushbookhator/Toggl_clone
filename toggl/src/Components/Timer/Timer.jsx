@@ -45,16 +45,16 @@ export const Timer=()=>{
     const [dummy, setDummy] = useState("")
     const [projectName,setProjectName] = useState("")
     const [createProjectName,setCreateProjectName] = useState("")
-
-    console.log(dummy)
-
     const [open, setOpen] = useState(false);
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
-  
+    
+    const payload = {
+        title: text
+    }
     const handleOpen = () => {
-      setOpen(true);
+        setOpen(true);
     };
     const handleClose = () => {
       setOpen(false);
