@@ -52,15 +52,22 @@ export const Footer = () => {
                 <li>Media Kit</li>
             </div>
             <div className={futerStyles.iconsFlex}>
-                <TwitterIconHome/>
-                <FacebookIconHome/>
-                <InstagramIconHome/>
-                <YouTubeIconHome/>
-                <LinkedinIconHome/>
-                <GitHubIconHome/>
+                <TwitterIconHome />
+                <FacebookIconHome />
+                <InstagramIconHome />
+                <YouTubeIconHome />
+                <LinkedinIconHome />
+                <GitHubIconHome />
             </div>
-            <div style={{width:"100%"}}>
-                <img width="100%" src={discImage} alt="preview"/>
+            <div className={futerStyles.outerDisc}>
+                <div className={futerStyles.discImg} style={{ width: "100%" }}>
+                    <img width="100%" src={discImage} alt="preview" />
+                </div>
+                <div id={futerStyles.beauty}>Beautifully simple planning</div>
+                <div id={futerStyles.intell}>Intelligent candidate-screening</div>
+            </div>
+            <div className={futerStyles.pinkky}>
+                © 2021 Toggl. All rights reserved.
             </div>
         </div>
     )
