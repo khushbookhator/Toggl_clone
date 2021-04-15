@@ -1,16 +1,16 @@
-import { GET_PROJECT_FAILURE, POST_PROJECT_FAILURE, POST_PROJECT_REQ, POST_PROJECT_SUCCESS } from "./actiontype"
+import { GET_PROJECT_FAILURE, POST_PROJECT_FAILURE, POST_PROJECT_REQ, POST_PROJECT_SUCCESS, GET_PROJECT_REQ, GET_PROJECT_SUCCESS } from "./actiontype"
 
 
 const init = {
-    project: [],
-    isPosting: false
+    proj: [],
+    isPosting: false,
+    isFetching: false
 }
 const projectReducer = (state = init, action) => {
     switch(action.type){
         case POST_PROJECT_SUCCESS: {
             return{
                 ...state,
-                project: action.project,
                 isPosting: false
             }
         }
@@ -29,24 +29,24 @@ const projectReducer = (state = init, action) => {
         case GET_PROJECT_REQ: {
             return{
                 ...state,
-                isPosting: true
+                isFetching: true
             }
         }
         case GET_PROJECT_SUCCESS: {
             return{
                 ...state,
-                project: action.project,
-                isPosting: false
+                proj: action.payload,
+                isFetching: false
             }
         }
         case GET_PROJECT_FAILURE: {
             return{
                 ...state,
-                isPosting: false
+                isFetching: false
             }
         }
         default:
-            state
+            return state
     }
 }
 
