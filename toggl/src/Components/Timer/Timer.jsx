@@ -9,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { useDispatch , useSelector} from "react-redux";
 import { getProject, postProject } from './../../Redux/Project/action';
+import { TimerData } from "./TimerData";
+import { getTask } from "../../Redux/Title/action";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -46,8 +48,6 @@ export const Timer=()=>{
     const [projectName,setProjectName] = useState("")
     const [createProjectName,setCreateProjectName] = useState("")
 
-    console.log(dummy)
-
     const [open, setOpen] = useState(false);
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
@@ -77,10 +77,10 @@ export const Timer=()=>{
         
     }
     
-
-
+    const task = useSelector(state=> state.tasks)
     React.useEffect(() => {
         dispatch(getProject())
+        dispatch(getTask())
     },[dispatch])
 
     
@@ -157,10 +157,20 @@ export const Timer=()=>{
                     <p>$</p>
                 </div>
                 <div>
-                    <StopWatch/>
+                    <StopWatch title={text} projname = {dummy}/>
                 </div>
             </div>
-
+            <div>
+                <h6>TODAY</h6>
+                <p>
+                    {
+                        task.total_time.reduce((a.b) => a+b)
+                    }
+                </p>
+            </div>
+            <div>
+                <TimerData/>
+            </div>
 
 
         </div>
