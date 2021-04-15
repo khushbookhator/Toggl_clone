@@ -14,6 +14,7 @@ export const StopWatch=()=>{
         },1000)
         setStatus(true)
         localStorage.setItem("timer",Date.now())
+        localStorage.setItem("startTime", Date.now())
     };
     useEffect(()=>{
         let a =Number(Date.now())-JSON.parse(localStorage.getItem("timer"))
@@ -37,6 +38,7 @@ export const StopWatch=()=>{
     }
     const handleReset=()=>{
         localStorage.setItem("totalTime",Math.floor((Number(Date.now())-JSON.parse(localStorage.getItem("timer")))/1000))
+        localStorage.setItem("endTime", Date.now())
         localStorage.removeItem("timer")
         setTime(0)
         clearInterval(x.current)

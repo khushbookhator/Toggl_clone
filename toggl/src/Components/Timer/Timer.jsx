@@ -6,6 +6,10 @@ import timerstyles from "./timer.module.css"
 export const Timer=()=>{
     const [text,settext] = useState("")
 
+    const payload = {
+        title: text
+    }
+
 
 
     return(
@@ -27,11 +31,6 @@ export const Timer=()=>{
                     <StopWatch/>
                 </div>
             </div>
-            dl;asjdl;asjdlk
-            sdka;sk
-            <h1>dsada</h1>
-            <h1>dsada</h1>
-            <h1>dsada</h1>
 
             {/* buttompart */}
 
