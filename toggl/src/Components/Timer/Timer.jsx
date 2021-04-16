@@ -74,6 +74,7 @@ export const Timer=()=>{
         handleClose()
     }
     const task = useSelector(state=> state.tasks.task)
+
     return(
         <div className={timerstyles.bgpage}>
             <div className={timerstyles.container}>
@@ -155,7 +156,6 @@ export const Timer=()=>{
                 <p>
                     {
                         getTime(task.reduce((acc, b) => acc + b.total_time, 0))
-
                     }
                 </p>
             </div>
