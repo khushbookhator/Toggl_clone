@@ -24,6 +24,7 @@ function TimerData() {
       setAnchorEl(null);
     };
     const handleDelete=(id)=>{
+        handleClose()
         dispatch(deleteTask(id))
     }
 
@@ -32,6 +33,7 @@ function TimerData() {
         <>
             {
                 task?.map((item) => 
+                     {return(
                     <div className={timerstyles.DownnContentMain} key={item.id} style={{
                         display:"flex",
                         justifyContent:"space-evenly"
@@ -40,20 +42,22 @@ function TimerData() {
                         <div className={timerstyles.projectNameContent}>{item.project_name.toUpperCase()}</div>
                         <div className={timerstyles.titleTimeContent}>{`${item.start_time}-${item.end_time}`}</div>
                         <div className={timerstyles.totalTimeContent}>{getTime(item.total_time)}</div>
+
                         <div>
                             <IconButton
                                 aria-haspopup="true"
                                 onClick={handleClick}
-                            >
+                                >
                                 <MoreVertIcon />
                             </IconButton>
+                            
                             <Menu
                                 style={{marginTop:"50px",marginRight:"30px"}}
                                 id="long-menu"
                                 anchorEl={anchorEl}
                                 open={open}
                                 onClose={handleClose}>
-                                <MenuItem onClick={()=>{handleClose(); handleDelete(item.id);}}>
+                                <MenuItem onClick={()=>handleDelete(item.id)}>
                                   Delete
                                 </MenuItem>
                                 <MenuItem onClick={handleClose}>
@@ -62,6 +66,7 @@ function TimerData() {
                             </Menu>
                         </div>
                     </div>
+                    )}
                 )
             }
         </>

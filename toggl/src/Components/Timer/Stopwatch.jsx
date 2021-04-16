@@ -34,6 +34,7 @@ export const StopWatch=({title, projname})=>{
             },1000)
             setStatus(true)
         }
+        dispatch(getTask())
     },[window.onload])
     
     

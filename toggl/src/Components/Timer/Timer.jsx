@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-
 export const Timer=()=>{
     const [text,settext] = useState("")
     const [dummy, setDummy] = useState("")
@@ -53,7 +52,6 @@ export const Timer=()=>{
     const [open, setOpen] = useState(false);
     const [colorNum, setColorNum] = useState("");
     const classes = useStyles();
-    // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     
     const payload = {
@@ -71,7 +69,6 @@ export const Timer=()=>{
 
     const colorList = ["#33A7FF", "red", "limegreen",  "#E57CD8", "blue", "purple", "teal", "orange", "pink", "lightskyblue", "green", "brown", "violet", "maroon", "khaki", "blue", "red"];
 
-
     const handlePostProj= () => {
         const payload = {
             project_name : createProjectName,
@@ -83,15 +80,11 @@ export const Timer=()=>{
         handleClose()
     }
     const task = useSelector(state=> state.tasks.task)
-
-    console.log()
-    
     React.useEffect(() => {
         dispatch(getProject())
         dispatch(getTask())
-    },[dispatch])
+    },[])
 
-    
     return(
         <div className={timerstyles.bgpage}>
             <div className={timerstyles.container}>
@@ -187,30 +180,3 @@ export const Timer=()=>{
         </div>
     )
 }
-
-
-
-
-
-
-
-
-// export default function SimpleModal() {
-  
-//   const body = (
-    
-//   );
-
-//   return (
-//     <div>
-//       <button type="button" onClick={handleOpen}>
-//         Open Modal
-//       </button>
-      
-//     </div>
-//   );
-// }
-
-
-
-

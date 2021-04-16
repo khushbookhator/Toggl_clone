@@ -77,6 +77,7 @@ export const postTask = (payload) => (dispatch) => {
     dispatch(postTaskReq())
     return axios.post(`${REACT_APP_BASE_URL}/title`, payload)
     .then((res) => dispatch(postTaskSuccess(res.data)))
+    .then(() => dispatch(getTask()))
 }
 
 export const getTask= () => (dispatch) => {
@@ -89,4 +90,5 @@ export const deleteTask = (id) => (dispatch) => {
     dispatch(deleteTaskReq())
     return axios.delete(`${REACT_APP_BASE_URL}/title/${id}`)
     .then((res) => dispatch(deleteTaskSuccess(res.data)))
+    .then(() => dispatch(getTask()))
 }
