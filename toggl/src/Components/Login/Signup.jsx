@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import signstyles from '../CSS/Signup.module.css'
-import   {auth ,google}from '../firebase'
+import signstyles from './Signup.module.css'
+import {auth ,google} from './firebase.js'
  
 function Signup(){
 
@@ -11,7 +11,7 @@ function Signup(){
 
    
    function googlesignup(){
-auth.signInWithPopup(google)
+ auth.signInWithPopup(google)
 .then( resp =>
   {
     return console.log(resp.email.displayEmail),

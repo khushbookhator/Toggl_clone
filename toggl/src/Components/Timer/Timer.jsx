@@ -78,14 +78,6 @@ export const Timer=()=>{
     }
     const task = useSelector(state=> state.tasks.task)
     const [sum , setSum] = React.useState(0)
-
-    
-
-
-
-
-    console.log()
-
     React.useEffect(() => {
         dispatch(getProject())
         dispatch(getTask())
@@ -173,7 +165,6 @@ export const Timer=()=>{
                 <p>
                     {
                         getTime(task.reduce((acc, b) => acc + b.total_time, 0))
-
                     }
                 </p>
             </div>

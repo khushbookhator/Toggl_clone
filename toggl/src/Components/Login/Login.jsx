@@ -1,8 +1,11 @@
  
-   import React , { useState } from 'react'
-   import loginstyles from '../CSS/Login.module.css'
-   import   {auth, google} from '../firebase'
-   function Login(){
+import React , { useState } from 'react'
+import loginstyles from './Login.module.css'
+import { auth , google} from './firebase';
+
+
+
+function Login(){
    
      
      const [password, setPassword] = useState("null");
