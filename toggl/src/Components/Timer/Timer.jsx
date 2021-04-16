@@ -49,7 +49,6 @@ export const Timer=()=>{
     const [createProjectName,setCreateProjectName] = useState("")
     const [open, setOpen] = useState(false);
     const classes = useStyles();
-    // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     
     const payload = {
@@ -64,8 +63,6 @@ export const Timer=()=>{
     const proj = useSelector(state => state.project.proj)
 
     const dispatch = useDispatch()
-
-    
     const handlePostProj= () => {
         const payload = {
             project_name : createProjectName,
@@ -82,7 +79,6 @@ export const Timer=()=>{
         dispatch(getTask())
     },[])
 
-    
     return(
         <div className={timerstyles.bgpage}>
             <div className={timerstyles.container}>
@@ -175,30 +171,3 @@ export const Timer=()=>{
         </div>
     )
 }
-
-
-
-
-
-
-
-
-// export default function SimpleModal() {
-  
-//   const body = (
-    
-//   );
-
-//   return (
-//     <div>
-//       <button type="button" onClick={handleOpen}>
-//         Open Modal
-//       </button>
-      
-//     </div>
-//   );
-// }
-
-
-
-

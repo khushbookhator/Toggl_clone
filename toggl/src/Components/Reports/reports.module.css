@@ -1,0 +1,51 @@
+.first{
+    background-color: white;
+    height:50px;
+    display: flex;
+    padding:5px 15px ;
+    justify-content: space-between;
+    color: rgb(103,85,111);
+    border-bottom:.5px solid rgb(177, 177, 177) ;
+}
+.first>div{
+    display: flex;
+    gap: 30px;
+}
+.first>div *:hover{
+    cursor: pointer;
+}
+.cont{
+    width:90%;
+    background-color: rgb(254,249,248);
+}.second {
+    display: flex;
+    gap:20px;
+    height:40px;
+    padding:8px;
+    border: 0.5px solid rgb(232,232,232);
+    background-color: white;
+    box-shadow: 10px rgb(232,232,232);
+    color:rgb(103,85,111);
+}
+.second > p {
+    color: grey;
+    margin-top: 8px;
+}
+.second > button {
+    background-color: white;
+    height:40px;
+    border-radius: 5px;
+    color: grey;
+    margin-top: 2px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+.second > button:hover{
+    background-color: rgb(245,243,245);
+}
+.imgs {
+    width:15px;
+    height:15px;
+    margin-right: 10px;
+} 
