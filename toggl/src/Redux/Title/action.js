@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { GET_TASK_SUCCESS, GET_TASK_FAILURE, GET_TASK_REQ, POST_TASK_FAILURE, POST_TASK_SUCCESS, POST_TASK_REQ } from './actiontype';
+import { GET_TASK_SUCCESS, GET_TASK_FAILURE, GET_TASK_REQ, POST_TASK_FAILURE, POST_TASK_SUCCESS, POST_TASK_REQ, DELETE_TASK_REQ, DELETE_TASK_FAILURE, DELETE_TASK_SUCCESS } from './actiontype';
 
 const { REACT_APP_BASE_URL } = process.env;
 
@@ -50,6 +50,29 @@ export const postTaskReq = () => {
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
+export const deleteTaskSuccess = id => {
+    return{
+        type: DELETE_TASK_SUCCESS,
+        id
+    }
+}
+
+export const deleteTaskFailure= err => {
+    return{
+        type: DELETE_TASK_FAILURE,
+        data: err
+    }
+    
+}
+
+export const deleteTaskReq = () => {
+    return{
+        type: DELETE_TASK_REQ,
+    }
+}
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
 export const postTask = (payload) => (dispatch) => {
     dispatch(postTaskReq())
     return axios.post(`${REACT_APP_BASE_URL}/title`, payload)
@@ -62,3 +85,8 @@ export const getTask= () => (dispatch) => {
     .then((res) => dispatch(getTaskSuccess(res.data)))
 }
 
+export const deleteTask = (id) => (dispatch) => {
+    dispatch(deleteTaskReq())
+    return axios.delete(`${REACT_APP_BASE_URL}/title/${id}`)
+    .then((res) => dispatch(deleteTaskSuccess(res.data)))
+}
