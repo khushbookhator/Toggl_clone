@@ -3,6 +3,7 @@ import { Home } from "../Components/Home/Home";
 import {Sidebar} from "../Compo/sidebar"
 import {Timer} from "../Components/Timer/Timer"
 import { Project } from "../Components/Project/Project";
+ 
 
 
 function Routes() {
@@ -28,6 +29,7 @@ function Routes() {
                     <Project/>
                 </div>
                 </Route>
+               
             </Switch>
         </>
     )

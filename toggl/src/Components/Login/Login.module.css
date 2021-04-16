@@ -1,0 +1,111 @@
+.body{
+    background-color: rgba(65,42,76,255);
+}
+
+.main{
+    background-color:rgba(44,19,56,255);
+    width: 40%;
+    margin: auto;
+    margin-top: 5%;
+    padding:20px;
+    color: white;
+    display: block;
+    text-align: left;
+    font-family: 'Inter',sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.333;
+    color: #FCE5D8;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    
+}
+.h1{
+  width: 100%;
+  font-family: 'GT Haptik Medium',sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.25;
+     
+    margin-bottom: 25px;
+    text-align: center;  
+}
+.h3{
+    font-family: 'Inter',sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.333;
+    
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+input{
+    background: transparent;
+    border: 2px solid #ABA0AF;
+    height: 40px;
+    width: 500px;
+   margin-top: 5px;
+    border-color: rgb(246, 108, 108);
+    padding-left: 15px;
+    caret-color: #2C1338;
+    font-family: 'Inter',sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.28;
+    color: #FCE5D8;
+}
+
+button{
+    font-family: 'GT Haptik Medium',sans-serif;
+    font-size: 1rem;
+    padding: 14px 50px;
+    background-color: #E57CD8;
+    color: #FFF;
+    text-align: center;
+    width:500px;
+    border-radius: 25px;
+    margin-top: 10px;
+    box-sizing: border-box; 
+    font-family: 'Inter',sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.28;
+    
+}
+ 
+button:hover{
+    background-color: rgba(65,42,76,255);
+}
+
+
+.google{
+    background-color: white;
+    width:250px;
+    color: black;
+}
+
+.googleimg{
+    width:20px;
+    height: 20px;
+   
+}
+
+.centered {
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'GT Haptik Medium',sans-serif;
+    font-weight: 400;
+    line-height: 1;
+    font-size: 50px;
+    color: white;
+  }
+  .container {
+    position: relative;
+    text-align: center;
+     width:100%;
+     opacity:0.5;
+  }
