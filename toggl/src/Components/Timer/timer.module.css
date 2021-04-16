@@ -36,8 +36,46 @@
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
+    width: 700px;
 }
 .dayPart{
     display: flex;
     justify-content: space-between;
+}
+.inpProjName{
+    border-radius: 5px;
+    width: 250px;
+    border: 1px solid grey;
+    height: 21px;
+}
+.crPrJct > span{
+    color: #E57CD8;
+    font-size: 25px;
+    margin-right: 10px;
+}
+.golaa{
+    font-size: 8px;
+    margin-right: 12px;
+    margin-left: 10px;
+}
+.titleDownnContent{
+    width: 20%;
+    text-align: left;
+}
+.projectNameContent{
+    width: 20%;
+    text-align: left;
+}
+.titleTimeContent{
+    width: 20%;
+    text-align: left;
+}
+.totalTimeContent{
+    width: 20%;
+    text-align: left;
+}
+.DownnContentMain{
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
 }

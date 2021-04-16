@@ -8,6 +8,7 @@ import { getTime } from '../../Utils/timeFormat';
 import { Link } from 'react-router-dom';
 import { deleteTask, getTask } from '../../Redux/Title/action';
 import { getProject } from '../../Redux/Project/action';
+import timerstyles from "./timer.module.css"
 
 
 function TimerData() {
@@ -32,12 +33,16 @@ function TimerData() {
         <>
             {
                 task?.map((item) => 
-                    {return(
-                    <div key={item.id} style={{display:"flex",justifyContent:"space-evenly"}}>
-                        <p>{item.title}</p>
-                        <p>{item.project_name}</p>
-                        <p>{`${item.start_time}-${item.end_time}`}</p>
-                        <p>{getTime(item.total_time)}</p>
+                     {return(
+                    <div className={timerstyles.DownnContentMain} key={item.id} style={{
+                        display:"flex",
+                        justifyContent:"space-evenly"
+                    }}>
+                        <div className={timerstyles.titleDownnContent}>{item.title}</div>
+                        <div className={timerstyles.projectNameContent}>{item.project_name.toUpperCase()}</div>
+                        <div className={timerstyles.titleTimeContent}>{`${item.start_time}-${item.end_time}`}</div>
+                        <div className={timerstyles.totalTimeContent}>{getTime(item.total_time)}</div>
+
                         <div>
                             <IconButton
                                 aria-haspopup="true"
