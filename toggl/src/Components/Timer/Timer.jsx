@@ -77,7 +77,6 @@ export const Timer=()=>{
         handleClose()
     }
     const task = useSelector(state=> state.tasks.task)
-    const [sum , setSum] = React.useState(0)
     React.useEffect(() => {
         dispatch(getProject())
         dispatch(getTask())
