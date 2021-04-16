@@ -1,10 +1,11 @@
-import { GET_PROJECT_FAILURE, POST_PROJECT_FAILURE, POST_PROJECT_REQ, POST_PROJECT_SUCCESS, GET_PROJECT_REQ, GET_PROJECT_SUCCESS } from "./actiontype"
+import { GET_PROJECT_FAILURE, POST_PROJECT_FAILURE, POST_PROJECT_REQ, POST_PROJECT_SUCCESS, GET_PROJECT_REQ, GET_PROJECT_SUCCESS , GET_INDIVIDUAL_PROJ_SUCCESS, GET_INDIVIDUAL_PROJ_REQ} from "./actiontype"
 
 
 const init = {
     proj: [],
     isPosting: false,
-    isFetching: false
+    isFetching: false,
+    individual:{}
 }
 const projectReducer = (state = init, action) => {
     switch(action.type){
@@ -43,6 +44,17 @@ const projectReducer = (state = init, action) => {
             return{
                 ...state,
                 isFetching: false
+            }
+        }
+        case GET_INDIVIDUAL_PROJ_REQ : {
+            return{
+                ...state,
+            }
+        }
+        case GET_INDIVIDUAL_PROJ_SUCCESS: {
+            return{
+                ...state,
+                individual: {...action.data}
             }
         }
         default:

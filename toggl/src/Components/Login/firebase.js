@@ -15,7 +15,7 @@ import firebase from 'firebase/app'
   const auth = app.auth()
  const google = new firebase.auth.GoogleAuthProvider()
 
-  export  { auth, google}
+  export {auth, google}
 
 
 
