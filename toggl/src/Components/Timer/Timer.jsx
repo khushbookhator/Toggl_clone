@@ -78,13 +78,19 @@ export const Timer=()=>{
         handleClose()
     }
     const task = useSelector(state=> state.tasks.task)
+    const [sum , setSum] = React.useState(0)
+
+    
+
+
+
 
     console.log()
-    
+
     React.useEffect(() => {
         dispatch(getProject())
         dispatch(getTask())
-    },[dispatch])
+    },[])
 
     
     return(
@@ -163,11 +169,22 @@ export const Timer=()=>{
                     <StopWatch title={text} projname = {dummy}/>
                 </div>
             </div>
+
+            <div style={{
+                display:"flex",
+                justifyContent:"space-between"
+            }}>
+                <h6>TODAY</h6>
+                <p>
+                    {
+                        task.slice(0, task.length-1).reduce((current, next) => current + next.total_time, 0)
+
             <div className={timerstyles.dayPart}>
                 <h6>TODAY</h6>
                 <p>
                     {
                         getTime(task.reduce((acc, b) => acc + b.total_time, 0))
+
                     }
                 </p>
             </div>

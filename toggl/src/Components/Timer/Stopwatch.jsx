@@ -34,6 +34,7 @@ export const StopWatch=({title, projname})=>{
             },1000)
             setStatus(true)
         }
+        dispatch(getTask())
     },[window.onload])
     
     
@@ -67,6 +68,11 @@ export const StopWatch=({title, projname})=>{
         }
         dispatch(postTask(payload)).then(dispatch(getTask()))
     }
+
+    // React.useEffect(() => {
+    //     dispatch(getTask())
+    // },[handleReset])
+
     return(
         <div className={stylesStopwatch.container}>
             <h3>{getTime(time)}</h3>

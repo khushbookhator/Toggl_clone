@@ -1,6 +1,10 @@
 import projstyles from "./project.module.css"
 
 function Project() {
+
+    
+
+
     return(
         <div className={projstyles.cont}>
             <div className={projstyles.first}>
@@ -35,7 +39,10 @@ function Project() {
                 <table>
                     <thead>
                         <tr>
-                            <td></td>
+                            <td>PROJECT</td>
+                            <td>CLIENT</td>
+                            <td>STATUS</td>
+                            <td>TEAM</td>
                         </tr>
                     </thead>
                 </table>
