@@ -32,9 +32,16 @@ function Reports() {
                     </button>
                 </div>
                 <div>
+                    <h1>BAR GRAPH</h1>
+                </div>
+                <div style={{
+                    width:"20%",
+                    justifyContent:"right",
+                    marginLeft:"75%",
+                    marginTop:"20%"
+                }}>
                     <PieCrt/>
                 </div>
-
             </div>
         </>
     )
