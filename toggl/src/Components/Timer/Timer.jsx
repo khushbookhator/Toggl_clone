@@ -7,6 +7,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import { useDispatch , useSelector} from "react-redux";
+import { getProject, postProject } from './../../Redux/Project/action';
+import { TimerData } from "./TimerData";
+import { getTask } from "../../Redux/Title/action";
+import { getTime } from "../../Utils/timeFormat";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -34,28 +39,59 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
-     
-
 
 
 
 export const Timer=()=>{
     const [text,settext] = useState("")
+    const [dummy, setDummy] = useState("")
     const [projectName,setProjectName] = useState("")
     const [createProjectName,setCreateProjectName] = useState("")
-
     const [open, setOpen] = useState(false);
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
-  
+    
+    const payload = {
+        title: text
+    }
     const handleOpen = () => {
-      setOpen(true);
+        setOpen(true);
     };
     const handleClose = () => {
       setOpen(false);
     };
+    const proj = useSelector(state => state.project.proj)
 
+    const dispatch = useDispatch()
+
+    
+    const handlePostProj= () => {
+        const payload = {
+            project_name : createProjectName,
+            client: "",
+            time: 0,
+            team:"ayush"
+        }
+        dispatch(postProject(payload)).then(() => dispatch(getProject()))
+        handleClose()
+    }
+    const task = useSelector(state=> state.tasks.task)
+    const [sum , setSum] = React.useState(0)
+
+    
+
+
+
+
+    console.log()
+
+    React.useEffect(() => {
+        dispatch(getProject())
+        dispatch(getTask())
+    },[])
+
+    
     return(
         <div className={timerstyles.bgpage}>
             <div className={timerstyles.container}>
@@ -66,12 +102,20 @@ export const Timer=()=>{
                     <PopupState variant="popover" popupId="demo-popup-menu">
                         {(popupState) => (
                             <React.Fragment>
-                            <Button variant="contained" style={{marginTop:"15px",background:"none"}} {...bindTrigger(popupState)}>
-                            📁
+                            <Button style={{marginTop:"15px",background:"none"}} {...bindTrigger(popupState)}>
+                                {dummy.length > 0 ? dummy : <img src="https://img.icons8.com/?id=842&size=2x&color=000000" alt="projects" width="20px"/>}
                             </Button>
                             <Menu style={{marginTop:"40px"}} {...bindMenu(popupState)}>
                                 <MenuItem><input type="text" value={projectName} onChange={(e)=>setProjectName(e.target.value)}/></MenuItem>
-                                <MenuItem onClick={popupState.close,handleOpen}>Create a project</MenuItem>
+                                {
+                                    proj.map((item) => 
+                                        <MenuItem key = {item.id} onClick={(e) => {setDummy(e.target.textContent);
+                                            popupState.close();
+                                        }}>{item.project_name}</MenuItem>
+                                    )
+                                }
+                                <MenuItem onClick={() => {setDummy(""); popupState.close()}}>No Project</MenuItem>
+                                <MenuItem onClick={() => {popupState.close(); handleOpen()}}>Create a project</MenuItem>
                             </Menu>
                             </React.Fragment>
                         )}
@@ -109,7 +153,7 @@ export const Timer=()=>{
                                 <input type="checkbox"/>
                             </div>
                             <div>
-                                <button>Create Project</button>
+                                <button onClick={handlePostProj}>Create Project</button>
                             </div>
                         </div>
                     </Modal>
@@ -121,10 +165,31 @@ export const Timer=()=>{
                     <p>$</p>
                 </div>
                 <div>
-                    <StopWatch/>
+                    <StopWatch title={text} projname = {dummy}/>
                 </div>
             </div>
 
+            <div style={{
+                display:"flex",
+                justifyContent:"space-between"
+            }}>
+                <h6>TODAY</h6>
+                <p>
+                    {
+                        task.slice(0, task.length-1).reduce((current, next) => current + next.total_time, 0)
+
+            <div className={timerstyles.dayPart}>
+                <h6>TODAY</h6>
+                <p>
+                    {
+                        getTime(task.reduce((acc, b) => acc + b.total_time, 0))
+
+                    }
+                </p>
+            </div>
+            <div>
+                <TimerData/>
+            </div>
 
 
         </div>

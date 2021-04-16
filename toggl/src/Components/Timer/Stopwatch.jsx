@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from "react"
+import { useDispatch } from "react-redux"
+import { postTask , getTask} from "../../Redux/Title/action"
+import { getTime } from "../../Utils/timeFormat"
 import stylesStopwatch from "./stopwatch.module.css"
 
-export const StopWatch=()=>{
+export const StopWatch=({title, projname})=>{
     const [time,setTime] =useState(0)
     const [status,setStatus] =useState(false)
     const x = useRef()
@@ -14,7 +17,9 @@ export const StopWatch=()=>{
         },1000)
         setStatus(true)
         localStorage.setItem("timer",Date.now())
-        localStorage.setItem("startTime", Date.now())
+        const startT = new Date()
+        const st = startT.getHours() + ':' + startT.getMinutes();
+        localStorage.setItem("startTime", st)
     };
     useEffect(()=>{
         let a =Number(Date.now())-JSON.parse(localStorage.getItem("timer"))
@@ -29,21 +34,45 @@ export const StopWatch=()=>{
             },1000)
             setStatus(true)
         }
+        dispatch(getTask())
     },[window.onload])
-    const getTime=(seconds)=>{
-        const sec = seconds % 60;
-        const min = Math.floor(seconds/60)%60;
-        const hrs = Math.floor(seconds/(60*60))
-        return `${hrs} : ${min>9?min:"0"+min} : ${sec>9?sec:"0"+sec}`
-    }
+    
+    
+    const dispatch = useDispatch()
+    
     const handleReset=()=>{
         localStorage.setItem("totalTime",Math.floor((Number(Date.now())-JSON.parse(localStorage.getItem("timer")))/1000))
-        localStorage.setItem("endTime", Date.now())
+        const endT = new Date()
+        const et = endT.getHours() + ':' + endT.getMinutes();
+        localStorage.setItem("endTime", et)
         localStorage.removeItem("timer")
         setTime(0)
         clearInterval(x.current)
         setStatus(false)
+
+        const today = new Date()
+        const date = today.getFullYear()+"-" + (today.getMonth() + 1) + '-' + today.getDate();
+        const payload = {
+            title: title,
+            date : date,
+            start_time: localStorage.getItem("startTime"),
+            end_time:localStorage.getItem("endTime"),
+            total_time: JSON.parse(localStorage.getItem("totalTime")),
+            project_name: projname,
+            subtitle: [
+                {
+                    task_time: 0,
+                    task_title:""
+                }
+            ]
+        }
+        dispatch(postTask(payload)).then(dispatch(getTask()))
     }
+
+    // React.useEffect(() => {
+    //     dispatch(getTask())
+    // },[handleReset])
+
     return(
         <div className={stylesStopwatch.container}>
             <h3>{getTime(time)}</h3>

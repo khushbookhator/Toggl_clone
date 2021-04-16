@@ -6,6 +6,13 @@
     padding: 6px;
     max-width: 100vw;
 }
+.lognnlink{
+    text-decoration: none;
+    color: #FFF3ED;
+}
+.lognnlink:hover{
+    color: #E57CD8;
+}
 
 .pinky> div{
     margin: 0px 12px;

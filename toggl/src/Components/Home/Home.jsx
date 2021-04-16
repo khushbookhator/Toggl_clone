@@ -4,6 +4,8 @@ import { HomeVideo } from './HomeComponents/HomeVideo'
 import { TimeIsMoney } from './HomeComponents/TimeIsMoney'
 import { WhyTogglHome } from './HomeComponents/WhyTogglHome'
 import { FeaturesVideoHome } from './HomeComponents/FeaturesVideoHome'
+import { SignUpHome } from './HomeComponents/SignUpHome'
+import { Footer } from './HomeComponents/Footer'
 
 export const Home = () => {
     return (
@@ -13,6 +15,8 @@ export const Home = () => {
             <TimeIsMoney/>
             <WhyTogglHome/>
             <FeaturesVideoHome/>
+            <SignUpHome/>
+            <Footer/>
         </div>
     )
 }
