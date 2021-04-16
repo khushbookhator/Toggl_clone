@@ -12,6 +12,8 @@ import { getProject, postProject } from './../../Redux/Project/action';
 import { TimerData } from "./TimerData";
 import { getTask } from "../../Redux/Title/action";
 import { getTime } from "../../Utils/timeFormat";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle} from "@fortawesome/free-solid-svg-icons";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -49,6 +51,7 @@ export const Timer=()=>{
     const [projectName,setProjectName] = useState("")
     const [createProjectName,setCreateProjectName] = useState("")
     const [open, setOpen] = useState(false);
+    const [colorNum, setColorNum] = useState("");
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
@@ -64,9 +67,11 @@ export const Timer=()=>{
     };
     const proj = useSelector(state => state.project.proj)
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    
+    const colorList = ["#33A7FF", "red", "limegreen",  "#E57CD8", "blue", "purple", "teal", "orange", "pink", "lightskyblue", "green", "brown", "violet", "maroon", "khaki", "blue", "red"];
+
+
     const handlePostProj= () => {
         const payload = {
             project_name : createProjectName,
@@ -98,19 +103,22 @@ export const Timer=()=>{
                         {(popupState) => (
                             <React.Fragment>
                             <Button style={{marginTop:"15px",background:"none"}} {...bindTrigger(popupState)}>
-                                {dummy.length > 0 ? dummy : <img src="https://img.icons8.com/?id=842&size=2x&color=000000" alt="projects" width="20px"/>}
+                                {dummy.length > 0 ? <span style={{color:`${colorList[colorNum]}`}}> {<FontAwesomeIcon style={{marginRight:"4px"}} className={timerstyles.golaa} icon={faCircle}/>} {dummy}</span> : <img src="https://img.icons8.com/?id=842&size=2x&color=000000" alt="projects" width="20px"/>}
                             </Button>
-                            <Menu style={{marginTop:"40px"}} {...bindMenu(popupState)}>
-                                <MenuItem><input type="text" value={projectName} onChange={(e)=>setProjectName(e.target.value)}/></MenuItem>
+                            <Menu style={{marginTop:"40px", marginLeft:"-70px", height:"1000px", fontSize:"10px"}} {...bindMenu(popupState)}>
+                                <MenuItem><input list="SearchBox" name="SearchBox" className={timerstyles.inpProjName} type="text" placeholder='Search' value={projectName} onChange={(e)=>setProjectName(e.target.value)}/></MenuItem>
+                                <MenuItem style={{backgroundColor:"#d3d3d3b8", fontSize:"13px", borderRadius:"10px", marginLeft:"10px", marginRight:"10px", marginTop:"10px"}} onClick={() => {setDummy(""); popupState.close()}}> {<FontAwesomeIcon style={{fontSize:"8px", marginRight:"10px"}} icon={faCircle}/>} No Project</MenuItem>
+                                <div style={{fontSize:"11px", marginLeft:"25px", marginTop:"20px", fontWeight:"bold"}}>NO CLIENT</div>
                                 {
-                                    proj.map((item) => 
-                                        <MenuItem key = {item.id} onClick={(e) => {setDummy(e.target.textContent);
+                                    proj.map((item, i) => 
+                                        <MenuItem style={{color:`${colorList[i]}`, fontSize:"14px", fontWeight:"400"}} key = {item.id} onClick={(e) => {setDummy(e.target.textContent);
                                             popupState.close();
-                                        }}>{item.project_name}</MenuItem>
+                                            setColorNum(i);
+                                        }}> {<FontAwesomeIcon className={timerstyles.golaa} icon={faCircle}/>} {item.project_name}</MenuItem>
                                     )
                                 }
-                                <MenuItem onClick={() => {setDummy(""); popupState.close()}}>No Project</MenuItem>
-                                <MenuItem onClick={() => {popupState.close(); handleOpen()}}>Create a project</MenuItem>
+                                <hr style={{marginBottom:"2px"}} />
+                                <MenuItem style={{fontSize:"13px", paddingBottom:"0px", marginBottom:"0px", fontWeight:"400", marginLeft:"40px", paddingTop:"0px"}} className={timerstyles.crPrJct} onClick={() => {popupState.close(); handleOpen()}}> <span>+</span>Create a new project</MenuItem>
                             </Menu>
                             </React.Fragment>
                         )}
@@ -154,7 +162,7 @@ export const Timer=()=>{
                     </Modal>
                 </div>
                 <div className={timerstyles.tagicon}>
-                    <img src="https://img.icons8.com/plumpy/24/000000/price-tag.png"/>
+                    <img src="https://img.icons8.com/plumpy/24/000000/price-tag.png" alt="preview"/>
                 </div>
                 <div className={timerstyles.doler}>
                     <p>$</p>
@@ -164,7 +172,7 @@ export const Timer=()=>{
                 </div>
             </div>
             <div className={timerstyles.dayPart}>
-                <h6>TODAY</h6>
+                <h5 style={{marginLeft:"20px", fontSize:"15px", fontWeight:"500"}}>Today</h5>
                 <p>
                     {
                         getTime(task.reduce((acc, b) => acc + b.total_time, 0))
