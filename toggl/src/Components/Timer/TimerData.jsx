@@ -10,7 +10,7 @@ import { deleteTask, getTask } from '../../Redux/Title/action';
 import { getProject } from '../../Redux/Project/action';
 import timerstyles from "./timer.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 
 function TimerData() {
@@ -55,7 +55,7 @@ function TimerData() {
                         cursor:"pointer"
                     }}>
                         <div className={timerstyles.titleDownnContent}>{item.title}</div>
-                        <div className={timerstyles.projectNameContent}>{item.project_name.toUpperCase()}</div>
+                        <div className={timerstyles.projectNameContent}> {<FontAwesomeIcon style={{opacity:"0.5", fontSize:"7px", marginRight:"5px"}} icon={faCircle}/>} {item.project_name.toUpperCase()}</div>
                         <div id={`${i}tagWalaIcon`} class={timerstyles.taggContentIcon}><img src="https://img.icons8.com/plumpy/24/000000/price-tag.png" alt="preview"/></div>
                         <div class={timerstyles.dollarContentIcon} id={`${i}dollarWalaIcon`}>{<FontAwesomeIcon icon={faDollarSign}/>}</div>
                         <div className={timerstyles.titleTimeContent}>{`${item.start_time}-${item.end_time}`}</div>
