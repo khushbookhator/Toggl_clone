@@ -1,14 +1,15 @@
 import projstyles from "./project.module.css"
-import React from "react"
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
+import { getTask } from "../../Redux/Title/action";
 
 function Project() {
 
     const [sortProject, setSortProject] = React.useState(false)
     const proj = useSelector(state=> state.project.proj)
     const task = useSelector(state => state.tasks.task)
-
+    const dispatch = useDispatch()
     const sortIt = () => {
         proj.sort((a,b) => 
             {if(b.project_name<a.project_name && sortProject){
@@ -19,6 +20,10 @@ function Project() {
         )
         setSortProject(!sortProject)
     }
+    useEffect(() => {
+        dispatch(getTask())
+    },[])
+
 
     return(
         <div className={projstyles.cont}>

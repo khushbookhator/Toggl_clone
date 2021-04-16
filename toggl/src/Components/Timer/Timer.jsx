@@ -74,6 +74,10 @@ export const Timer=()=>{
         handleClose()
     }
     const task = useSelector(state=> state.tasks.task)
+    React.useEffect(() => {
+        dispatch(getProject())
+        dispatch(getTask())
+    },[])
 
     return(
         <div className={timerstyles.bgpage}>
