@@ -168,16 +168,6 @@ export const Timer=()=>{
                     <StopWatch title={text} projname = {dummy}/>
                 </div>
             </div>
-
-            <div style={{
-                display:"flex",
-                justifyContent:"space-between"
-            }}>
-                <h6>TODAY</h6>
-                <p>
-                    {
-                        task.slice(0, task.length-1).reduce((current, next) => current + next.total_time, 0)
-
             <div className={timerstyles.dayPart}>
                 <h6>TODAY</h6>
                 <p>
