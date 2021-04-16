@@ -23,6 +23,7 @@ function TimerData() {
       setAnchorEl(null);
     };
     const handleDelete=(id)=>{
+        handleClose()
         dispatch(deleteTask(id))
     }
 
@@ -31,10 +32,8 @@ function TimerData() {
         <>
             {
                 task?.map((item) => 
-                    <div key={item.id} style={{
-                        display:"flex",
-                        justifyContent:"space-evenly"
-                    }}>
+                    {return(
+                    <div key={item.id} style={{display:"flex",justifyContent:"space-evenly"}}>
                         <p>{item.title}</p>
                         <p>{item.project_name}</p>
                         <p>{`${item.start_time}-${item.end_time}`}</p>
@@ -43,16 +42,17 @@ function TimerData() {
                             <IconButton
                                 aria-haspopup="true"
                                 onClick={handleClick}
-                            >
+                                >
                                 <MoreVertIcon />
                             </IconButton>
+                            
                             <Menu
                                 style={{marginTop:"50px",marginRight:"30px"}}
                                 id="long-menu"
                                 anchorEl={anchorEl}
                                 open={open}
                                 onClose={handleClose}>
-                                <MenuItem onClick={()=>{handleClose(); handleDelete(item.id);}}>
+                                <MenuItem onClick={()=>handleDelete(item.id)}>
                                   Delete
                                 </MenuItem>
                                 <MenuItem onClick={handleClose}>
@@ -61,6 +61,7 @@ function TimerData() {
                             </Menu>
                         </div>
                     </div>
+                    )}
                 )
             }
         </>
