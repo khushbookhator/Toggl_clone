@@ -4,6 +4,7 @@ import { getIndividualProject } from './../../Redux/Project/action';
 import { useParams } from "react-router";
 import { useDispatch , useSelector} from "react-redux";
 import { getTime } from './../../Utils/timeFormat';
+import { getTask } from "../../Redux/Title/action";
 
 function IndividualProject() {
 
@@ -12,10 +13,10 @@ function IndividualProject() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getIndividualProject(id))
+        dispatch(getTask())
     },[])
 
     const individual = useSelector(state => state.project.individual)
-    console.log(individual)
 
     return(
         <div className={projstyles.cont}>
@@ -51,7 +52,7 @@ function IndividualProject() {
                     <h5>CLOCKED HOURS</h5>
                     <h1>
                         {
-                            getTime(task.filter((items) => items.project_name === individual.project_name).reduce((acc, b) => acc + b.total_time, 0))
+                            getTime(task.filter((items) => items.project_name.trim() === individual.project_name).reduce((acc, b) => acc + b.total_time, 0))
                         }
                     </h1>
                 </div>
