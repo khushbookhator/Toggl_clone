@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-
 export const Timer=()=>{
     const [text,settext] = useState("")
     const [dummy, setDummy] = useState("")
