@@ -31,7 +31,7 @@ function TimerData() {
     }
 
     const handleHover = (i) => {
-        document.getElementById(i).style.backgroundColor = "#d3d3d3b8";
+        document.getElementById(i).style.backgroundColor = "rgb(243, 243, 243);";
         document.getElementById(`${i}dot3btn`).style.visibility = "visible";
         document.getElementById(`${i}tagWalaIcon`).style.visibility = "visible";
         document.getElementById(`${i}dollarWalaIcon`).style.visibility = "visible";

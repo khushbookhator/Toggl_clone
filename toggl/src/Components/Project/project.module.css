@@ -17,6 +17,7 @@
     outline: none;
     border:none;
     border-radius: 8px;
+    cursor: pointer;
 }
 .second {
     display: flex;
@@ -74,4 +75,24 @@
     border-radius: 5px;
     border: 1px solid grey;
     width: 8%;
+}
+.headingProjsXYZ > div{
+    width: 10%;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: gray;
+}
+.fetchcontentXYZ > div{
+    width: 10%;
+    text-align: left;
+    color: black;
+    font-size: 13px;
+}
+.fetchcontentXYZ > span{
+    color: black;
+}
+.dot3btnProj{
+    visibility: hidden;
 }
