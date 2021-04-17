@@ -13,7 +13,10 @@ import { TimerData } from "./TimerData";
 import { getTask } from "../../Redux/Title/action";
 import { getTime } from "../../Utils/timeFormat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle} from "@fortawesome/free-solid-svg-icons";
+import { ProgressLine } from "./ProgressLine";
 import { faCircle, faInfoCircle, faTimes} from "@fortawesome/free-solid-svg-icons";
+
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -166,6 +169,11 @@ export const Timer=()=>{
                     <StopWatch title={text} projname = {dummy}/>
                 </div>
             </div>
+            <div>
+                <ProgressLine/>
+            </div>
+            <br/>
+            <br/>
             <div className={timerstyles.dayPart}>
                 <h5 style={{marginLeft:"20px", fontSize:"15px", fontWeight:"500"}}>Today</h5>
                 <p>
