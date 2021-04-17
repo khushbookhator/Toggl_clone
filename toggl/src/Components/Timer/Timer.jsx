@@ -151,7 +151,7 @@ export const Timer=()=>{
                                 <input style={{marginLeft:"145px"}} type="checkbox"/>
                             </div>
                             <div>
-                                <button style={{cursor:"pointer" , width:"100%", backgroundColor:"#E57CD8", padding:"10px 20px", color:"white", borderRadius:"8px", border:"none", marginTop:"35px"}} onClick={handlePostProj}>Create Project</button>
+                                <button style={{cursor:"pointer" ,width:"100%", backgroundColor:"#E57CD8", padding:"10px 20px", color:"white", borderRadius:"8px", border:"none", marginTop:"35px"}} onClick={handlePostProj}>Create Project</button>
                             </div>
                         </div>
                     </Modal>
