@@ -23,9 +23,8 @@ function ProgressLine () {
                 <> 
                     <div style={{
                         width: `${Math.round((task.filter((items) => items.project_name.trim() === item.project_name).reduce((acc, b) => acc + b.total_time, 0)*100)/total_time)}%`,
-                        
                     }}>
-                        <div>{item.project_name}</div>
+                        <div>{Math.round((task.filter((items) => items.project_name.trim() === item.project_name).reduce((acc, b) => acc + b.total_time, 0)*100)/total_time) > 0? item.project_name:null}</div>
                         <div style={{
                             backgroundColor:`#${Math.floor(Math.random()*16777215).toString(16)}`,
                             borderRadius:"5px",
