@@ -15,6 +15,7 @@ import { getTime } from "../../Utils/timeFormat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import { ProgressLine } from "./ProgressLine";
+import { selectUser } from "../Login/userSlice";
 
 export function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -56,7 +57,13 @@ export const Timer=()=>{
     const [colorNum, setColorNum] = useState("");
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
-    
+
+    const user = useSelector(state=>state)
+    console.log(user)
+    const payload = {
+        title: text
+    }
+
     const handleOpen = () => {
         setOpen(true);
     };
