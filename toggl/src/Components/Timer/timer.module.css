@@ -59,26 +59,41 @@
     margin-left: 10px;
 }
 .titleDownnContent{
-    width: 20%;
+    width: 10%;
     text-align: left;
 }
 .projectNameContent{
-    width: 20%;
+    width: 10%;
     text-align: left;
+    font-size: 13px;
 }
 .titleTimeContent{
-    width: 20%;
+    width: 10%;
+    font-size: 13px;
     text-align: left;
 }
 .totalTimeContent{
-    width: 20%;
+    width: 10%;
+    font-size: 13px;
     text-align: left;
 }
 .DownnContentMain{
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #8080806e;
     margin-bottom: 10px;
     padding-bottom: 0px;
+    margin-top: 4px;
+    padding-top: 4px;
+    height: 35px;
+    align-items: center;
+    vertical-align: middle;
+    font-family: sans-serif;
 }
 .paper{
     border-radius: 10px;
+}
+.dot3btn, .taggContentIcon, .dollarContentIcon{
+    visibility: hidden;
+}
+.taggContentIcon{
+    margin-left: 350px;
 }

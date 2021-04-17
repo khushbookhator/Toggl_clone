@@ -181,7 +181,7 @@ export const Timer=()=>{
             <br/>
             <div className={timerstyles.dayPart}>
                 <h5 style={{marginLeft:"20px", fontSize:"15px", fontWeight:"500"}}>Today</h5>
-                <p>
+                <p style={{marginRight:"140px", fontWeight:"bold"}}>
                     {
                         getTime(task.reduce((acc, b) => acc + b.total_time, 0))
                     }
