@@ -210,3 +210,13 @@
 .showtime{
     font-size: 30px;
 }
+.searchInput{
+    display: none;
+    position: absolute;
+    top: 19%;
+    left: 45%;
+}
+.searchInput > input{
+    height: 23px;
+    width: 200px;
+}
