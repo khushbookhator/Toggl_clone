@@ -25,8 +25,8 @@ function  getModalStyle() {
   const left = 50 + rand();
 
   return {
-    top: `${top}%`,
-    left: `${left}%`,
+    top: `40%`,
+    left: `55%`,
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
@@ -37,9 +37,11 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: 300,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: '2px solid #fff',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    borderRadius: "20px",
+    outline:"none"
   },
 }));
 
@@ -133,32 +135,32 @@ export const Timer=()=>{
                     >
                         <div style={modalStyle} className={classes.paper}>
                             <div>
-                                <p>Create new project</p>
+                            <p style={{marginTop:"0px", fontWeight:"500", fontSize:"14px"}}>Create new project {<FontAwesomeIcon style={{marginLeft:"150px"}} icon={faTimes}/>}</p>
                             </div>
                             <div>
                                 <div>
-                                    <input type="text" name="createProjectName" value={createProjectName} onChange={(e)=>setCreateProjectName(e.target.value)}/>
+                                <input style={{borderRadius:"10px", width:"245px", height:"26px", border:"1px solid black", padding:"5px 15px", fontSize:"15px"}} placeholder="Project name" type="text" name="createProjectName" value={createProjectName} onChange={(e)=>setCreateProjectName(e.target.value)}/>
                                 </div>
                                 <div>
                                     <div></div>
                                 </div>
                             </div>
                             <div>
-                                <select name="Workspace">
+                            <select style={{width:"92%", marginTop:"15px", height:"30px", borderRadius:"8px", paddingLeft:"10px", outline:"none"}} name="Workspace">
                                     <option value="username">Ayush</option>
                                 </select>
                             </div>
                             <div>
-                                <select name="Client">
+                            <select style={{width:"92%", marginTop:"15px", height:"30px", borderRadius:"8px", paddingLeft:"10px", outline:"none", paddingRight:"5px"}} name="Client">
                                     <option value="username">Ayush</option>
                                 </select>
                             </div>
-                            <div>
-                                <label>Private Project</label>
-                                <input type="checkbox"/>
+                            <div style={{marginTop:"10px"}}>
+                                <label>Private project {<FontAwesomeIcon style={{opacity:"0.7", marginLeft:"5px"}} icon={faInfoCircle}/>}</label>
+                                <input style={{marginLeft:"145px"}} type="checkbox"/>
                             </div>
                             <div>
-                                <button onClick={handlePostProj}>Create Project</button>
+                                <button style={{cursor:"pointer" ,width:"100%", backgroundColor:"#E57CD8", padding:"10px 20px", color:"white", borderRadius:"8px", border:"none", marginTop:"35px"}} onClick={handlePostProj}>Create Project</button>
                             </div>
                         </div>
                     </Modal>
