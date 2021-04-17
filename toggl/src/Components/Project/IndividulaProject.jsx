@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTime } from './../../Utils/timeFormat';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { getTask } from "../../Redux/Title/action";
 
 function IndividualProject() {
 
@@ -14,10 +15,10 @@ function IndividualProject() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getIndividualProject(id))
-    }, [])
+        dispatch(getTask())
+    },[])
 
     const individual = useSelector(state => state.project.individual)
-    console.log(individual)
 
     return (
         <div className={projstyles.cont}>
@@ -52,7 +53,7 @@ function IndividualProject() {
                 <h5 id={projstyles.clckHour}>CLOCKED HOURS</h5>
                 <p id={projstyles.clckHourTiming}>
                     {
-                        getTime(task.filter((items) => items.project_name === individual.project_name).reduce((acc, b) => acc + b.total_time, 0))
+                        getTime(task.filter((items) => items.project_name.trim() === individual.project_name).reduce((acc, b) => acc + b.total_time, 0))
                     }
                 </p>
             </div>

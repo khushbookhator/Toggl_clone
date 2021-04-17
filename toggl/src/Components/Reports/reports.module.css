@@ -14,9 +14,12 @@
 .first>div *:hover{
     cursor: pointer;
 }
-.cont{
+.repocont{
     width:90%;
-    background-color: rgb(254,249,248);
+    background-color: #FDF8F7;
+    max-height: 99vh;
+    overflow-y: scroll;
+    /* background-color: black; */
 }.second {
     display: flex;
     gap:20px;

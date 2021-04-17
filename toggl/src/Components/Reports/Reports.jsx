@@ -1,4 +1,5 @@
-import Demo from "./BarGraph"
+import ReactFC from "react-fusioncharts";
+import {chartConfigs, MyComponent} from "./BarGraph"
 import { PieCrt } from "./Pie"
 import reportstyle from "./reports.module.css"
 
@@ -7,7 +8,7 @@ function Reports() {
     
     return(
         <>
-            <div className={reportstyle.cont}>
+            <div className={reportstyle.repocont}>
                 <div className={reportstyle.first}>
                     <div>
                         <h4 style={{marginTop:"15px"}}>Reports</h4>
@@ -32,13 +33,12 @@ function Reports() {
                     </button>
                 </div>
                 <div>
-                    <h1>BAR GRAPH</h1>
+                    <ReactFC {...chartConfigs} />
                 </div>
+                <br/>
                 <div style={{
-                    width:"20%",
-                    justifyContent:"right",
-                    marginLeft:"75%",
-                    marginTop:"20%"
+                   display:"flex",
+                   justifyContent:"space-between"
                 }}>
                     <PieCrt/>
                 </div>
