@@ -7,7 +7,7 @@ import { Reports } from "../Components/Reports/Reports";
 import { IndividualProject } from "../Components/Project/IndividulaProject";
 import { Login } from "../Components/Login/Login";
 import { Signup } from "../Components/Login/Signup";
- 
+import { NotFound } from "../Components/NotFound";
 
 
 function Routes() {
@@ -54,6 +54,9 @@ function Routes() {
                     <Sidebar/>
                     <Reports/>
                 </div>
+                </Route>
+                <Route>
+                    <NotFound/>
                 </Route>
             </Switch>
         </>

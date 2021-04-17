@@ -1,6 +1,6 @@
 import ReactFC from "react-fusioncharts";
 import { useSelector } from "react-redux";
-import {chartConfigs, MyComponent, Something} from "./BarGraph"
+import { MyComponent, Something} from "./BarGraph"
 import { PieCrt } from "./Pie"
 import reportstyle from "./reports.module.css"
 
@@ -37,7 +37,8 @@ function Reports() {
                     </button>
                 </div>
                 <div>
-                    <ReactFC {...chartConfigs}/>
+                    {/* <ReactFC {...chartConfigs}/> */}
+                    <Something/>
                 </div>
                 <br/>
                 <div style={{

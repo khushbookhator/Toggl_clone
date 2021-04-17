@@ -1,12 +1,17 @@
 import { DriveEtaRounded } from "@material-ui/icons"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from 'react';
+import { getTask } from "../../Redux/Title/action";
 
 
 function ProgressLine () {
     const proj = useSelector(state=> state.project.proj)
     const task = useSelector(state => state.tasks.task)
-
+    const dispatch = useDispatch()
     const total_time = task.reduce((acc, b) => acc + b.total_time, 0)
+    useEffect(() => {
+        dispatch(getTask())
+    },[])
 
     return(
         <>
