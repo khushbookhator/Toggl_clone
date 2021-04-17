@@ -11,11 +11,11 @@ import firebase from 'firebase/app'
     appId: "1:824691423536:web:369b1b8610d2fff5ce70f5"
   };
   // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = app.auth()
+  const firebaseApp = firebase.initializeApp(firebaseConfig);
+  // const db = firebaseApp.firestore()
+  const auth = firebase.auth()
  const google = new firebase.auth.GoogleAuthProvider()
 
   export {auth, google}
-
 
 

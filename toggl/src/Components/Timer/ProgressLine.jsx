@@ -1,13 +1,19 @@
 import { DriveEtaRounded } from "@material-ui/icons"
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { getProject } from "../../Redux/Project/action"
+import { getTask } from "../../Redux/Title/action"
 
 
 function ProgressLine () {
     const proj = useSelector(state=> state.project.proj)
     const task = useSelector(state => state.tasks.task)
-
+    const dispatch = useDispatch()
     const total_time = task.reduce((acc, b) => acc + b.total_time, 0)
-
+    useEffect(()=>{
+        dispatch(getProject())
+        dispatch(getTask())
+    },[])
     return(
         <>
             <div style={{
@@ -19,7 +25,7 @@ function ProgressLine () {
                 gap:"2px"
             }}>
             {
-                proj.map((item) => 
+                proj?.map((item) => 
                 <> 
                     <div style={{
                         width: `${Math.round((task.filter((items) => items.project_name.trim() === item.project_name).reduce((acc, b) => acc + b.total_time, 0)*100)/total_time)}%`,
@@ -41,3 +47,6 @@ function ProgressLine () {
 }
 
 export {ProgressLine}
+
+
+// `${task.filter((items) => items.project_name.trim() === item.project_name?item.project_name.trim():null)[0]!==undefined||task.filter((items) => items.project_name.trim() === item.project_name?item.project_name.trim():null)[0]!==null?item.project_name:null}`
