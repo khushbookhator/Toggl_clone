@@ -68,9 +68,12 @@ export const Timer=()=>{
     };
     const proj = useSelector(state => state.project.proj)
 
-    const dispatch = useDispatch();
+
+    const dispatch = useDispatch()
+
 
     const colorList = ["#33A7FF", "red", "limegreen",  "#E57CD8", "blue", "purple", "teal", "orange", "pink", "lightskyblue", "green", "brown", "violet", "maroon", "khaki", "blue", "red"];
+
 
     const handlePostProj= () => {
         const payload = {
