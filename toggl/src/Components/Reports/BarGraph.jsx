@@ -1,54 +1,65 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import ReactFC from "react-fusioncharts";
+import FusionCharts from "fusioncharts";
+import Column2D from "fusioncharts/fusioncharts.charts";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import { useSelector } from "react-redux";
 
-import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
-import {
-  Chart,
-  BarSeries,
-  Title,
-  ArgumentAxis,
-  ValueAxis,
-} from '@devexpress/dx-react-chart-material-ui';
 
-import { Animation } from '@devexpress/dx-react-chart';
+ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
+const today =  new Date()
+const date = today.getFullYear()+"-" + (today.getMonth() + 1) + '-' + today.getDate();
 
-const data = [
-  { date: '1950', time: 2.525 },
-  { date: '1960', time: 3.018 },
-  { date: '1970', time: 3.682 },
-  { date: '1980', time: 4.440 },
-  { date: '1990', time: 5.310 },
-  { date: '2000', time: 6.127 },
-  { date: '2010', time: 6.930 },
+var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+const chartData = [
+  {
+    label: `${days[today.getDay()]}
+    ${today.getMonth() + 1}/${today.getDate() - 6}`,
+  },
+  {
+    label: `${days[today.getDay()-5]}
+    ${today.getMonth() + 1}/${today.getDate() - 5}`,
+    value: "9"
+  },
+  {
+    label: `${days[today.getDay()-4]}
+    ${today.getMonth() + 1}/${today.getDate() - 4}`,
+    value: "10"
+  },
+  {
+    label: `${days[today.getDay()-3]}
+    ${today.getMonth() + 1}/${today.getDate() - 3}`,
+    value: "14"
+  },
+  {
+    label: `${days[today.getDay()-2]}
+    ${today.getMonth() + 1}/${today.getDate() - 2}`,
+    value: "5"
+  },
+  {
+    label: `${days[today.getDay()-1]}
+    ${today.getMonth() + 1}/${today.getDate() - 1}`,
+    value: "1"
+  },
+  {
+    label: `${days[today.getDay()]}
+    ${today.getMonth() + 1}/${today.getDate()}`,
+    value: "3"
+  }
 ];
 
-export default class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data,
-    };
+export const chartConfigs = {
+  type: "column2d", 
+  width: "100%", 
+  height: "300", 
+  dataFormat: "json", 
+  dataSource: {
+    chart: {
+        theme: "fusion",
+        yAxisPosition: "right",
+        numberSuffix: "h"
+    },
+    data: chartData
   }
-
-  render() {
-    const { data: chartData } = this.state;
-
-    return (
-      <Paper>
-        <Chart
-          data={chartData}
-        >
-          <ArgumentAxis />
-          <ValueAxis max={7} />
-
-          <BarSeries
-            valueField="population"
-            argumentField="year"
-          />
-          <Title text="World population" />
-          <Animation />
-        </Chart>
-      </Paper>
-    );
-  }
-}
+};

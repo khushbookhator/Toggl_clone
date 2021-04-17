@@ -8,6 +8,9 @@ import { getTime } from '../../Utils/timeFormat';
 import { Link } from 'react-router-dom';
 import { deleteTask, getTask } from '../../Redux/Title/action';
 import { getProject } from '../../Redux/Project/action';
+import timerstyles from "./timer.module.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 
 function TimerData() {
@@ -27,19 +30,42 @@ function TimerData() {
         dispatch(deleteTask(id))
     }
 
+    const handleHover = (i) => {
+        document.getElementById(i).style.backgroundColor = "rgb(243, 243, 243);";
+        document.getElementById(`${i}dot3btn`).style.visibility = "visible";
+        document.getElementById(`${i}tagWalaIcon`).style.visibility = "visible";
+        document.getElementById(`${i}dollarWalaIcon`).style.visibility = "visible";
+    }
+    const handleLeave = (i) => {
+        document.getElementById(i).style.backgroundColor = "#fff"
+        document.getElementById(`${i}dot3btn`).style.visibility = "hidden";
+        document.getElementById(`${i}tagWalaIcon`).style.visibility = "hidden";
+        document.getElementById(`${i}dollarWalaIcon`).style.visibility = "hidden";
+    }
+
 
     return(
         <>
             {
-                task?.map((item) => 
-                    {return(
-                    <div key={item.id} style={{display:"flex",justifyContent:"space-evenly"}}>
-                        <p>{item.title}</p>
-                        <p>{item.project_name}</p>
-                        <p>{`${item.start_time}-${item.end_time}`}</p>
-                        <p>{getTime(item.total_time)}</p>
+                task?.map((item, i) => 
+                     {return(
+                    <div id={i} onMouseLeave={() => handleLeave(i)} onMouseOver={() => handleHover(i)} className={timerstyles.DownnContentMain} key={item.id} style={{
+                        display:"flex",
+                        justifyContent:"space-evenly",
+                        cursor:"pointer"
+                    }}>
+                        <div className={timerstyles.titleDownnContent}>{item.title}</div>
+                        <div className={timerstyles.projectNameContent}> {<FontAwesomeIcon style={{opacity:"0.5", fontSize:"7px", marginRight:"5px"}} icon={faCircle}/>} {item.project_name.toUpperCase()}</div>
+                        <div id={`${i}tagWalaIcon`} class={timerstyles.taggContentIcon}><img src="https://img.icons8.com/plumpy/24/000000/price-tag.png" alt="preview"/></div>
+                        <div class={timerstyles.dollarContentIcon} id={`${i}dollarWalaIcon`}>{<FontAwesomeIcon icon={faDollarSign}/>}</div>
+                        <div className={timerstyles.titleTimeContent}>{`${item.start_time}-${item.end_time}`}</div>
+                        <div className={timerstyles.totalTimeContent}>{getTime(item.total_time)}</div>
+
+
                         <div>
                             <IconButton
+                            id={`${i}dot3btn`}
+                                className={timerstyles.dot3btn}
                                 aria-haspopup="true"
                                 onClick={handleClick}
                                 >

@@ -1,14 +1,17 @@
 import projstyles from "./project.module.css"
-import React from "react"
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
+import { getTask } from "../../Redux/Title/action";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 function Project() {
 
     const [sortProject, setSortProject] = React.useState(false)
     const proj = useSelector(state=> state.project.proj)
     const task = useSelector(state => state.tasks.task)
-
+    const dispatch = useDispatch()
     const sortIt = () => {
         proj.sort((a,b) => 
             {if(b.project_name<a.project_name && sortProject){
@@ -19,6 +22,19 @@ function Project() {
         )
         setSortProject(!sortProject)
     }
+    useEffect(() => {
+        dispatch(getTask())
+    },[])
+
+    const handleHover = (i) => {
+        document.getElementById(i).style.backgroundColor = "rgb(243, 243, 243)";
+        document.getElementById(`${i}dot3btnProj`).style.visibility = "visible";
+    }
+    const handleLeave = (i) => {
+        document.getElementById(i).style.backgroundColor = "#fff"
+        document.getElementById(`${i}dot3btnProj`).style.visibility = "hidden";
+    }
+
 
     return(
         <div className={projstyles.cont}>
@@ -51,36 +67,39 @@ function Project() {
                 <div style={{textAlign:"left", padding:"20px"}}>
                     <button className={projstyles.bulk}>Bulk edit</button>
                 </div>
-                    <div style={{
+                    <div className={projstyles.headingProjsXYZ} style={{
                         display:"flex",
-                        width:"70%",
-                        justifyContent:"space-evenly",
-                        cursor:"pointer"
+                        width:"100%",
+                        justifyContent:"space-evenly"
                     }}>
                         <div style={{
                             display:"flex",
-                            gap:"10px",
-                        }}  onClick={sortIt}><p>PROJECT</p> 
-                            <p>{sortProject ? "⇣" : "⇡"}</p>
+                            gap:"10px"
+                        }}  onClick={sortIt}><div>PROJECT</div> 
+                            <div>{sortProject ? "⇣" : "⇡"}</div>
                         </div>
-                        <div>CLIENT</div>
+                        <div style={{marginLeft:"270px"}}>CLIENT</div>
                         <div>STATUS</div>
-                        <div>TEAM</div>
+                        <div style={{marginRight:"50px"}}>TEAM</div>
                     </div>
                     {
-                        proj?.map((item) => 
-                                <Link to={`/projects/${item.id}`}>
-                                <div style={{
+                        proj?.map((item, i) => 
+                                <Link style={{textDecoration:"none"}} to={`/projects/${item.id}`}>
+                                <div onMouseLeave={() => handleLeave(i)} onMouseOver={() => handleHover(i)} id={i} className={projstyles.fetchcontentXYZ} style={{
                                     display:"flex",
                                     height:"40px",
-                                    width:"70%",
-                                    justifyContent:"space-evenly"
+                                    width:"100%",
+                                    justifyContent:"space-evenly",
+                                    borderBottom:"1px solid #8080806e",
+                                    verticalAlign: "middle",
+                                    alignItems: "center"
                                 }}>
-                                    <div>{item.project_name}</div>
-                                    <div>{item.client}</div>
+                                    <div> {<FontAwesomeIcon style={{fontSize:"8px", marginRight:"10px", opacity:"0.5"}} icon={faCircle}/>} {item.project_name}</div>
+                                    <div style={{marginLeft:"290px"}}>{item.client}</div>
                                     <div>{
                                         Math.floor((task.filter((items) => items.project_name === item.project_name).reduce((acc, b) => acc + b.total_time, 0))/3600)} h</div>
                                     <div>{item.team}</div>
+                                    <span id={`${i}dot3btnProj`} className={projstyles.dot3btnProj}><FontAwesomeIcon icon={faEllipsisV}/></span>
                                 </div>
                                 </Link>
                         )

@@ -17,6 +17,7 @@
     outline: none;
     border:none;
     border-radius: 8px;
+    cursor: pointer;
 }
 .second {
     display: flex;
@@ -39,6 +40,9 @@
 .second > p {
     color: grey;
     margin-top: 8px;
+    font-size: 14px;
+    margin: 1px 6px;
+    margin-right: 0px;
 }
 .second > button {
     background-color: white;
@@ -67,6 +71,46 @@
  background-color: white;
 
 }
+.cont > p {
+    margin-left: 20px;
+}
+.details {
+    width:60%;
+    background-color: white;
+    height:150x;
+    margin-left: 20px;
+    padding: 2% 1% 2% 3%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px lightgrey;
+}
+.details > div > button {
+    background-color: #F5F3F5;
+    color: rgb(209,209,209);
+    outline: none;
+    border: none;
+    margin-left: 80%;
+    width:15%;
+    height:40px;
+    border-radius: 5px;
+
+}
+.details > div:nth-child(2) {
+    margin-top: 20px;
+    display: flex;
+    color: rgb(154,142,159);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    gap:60%;
+}
+.details > div:nth-child(3) {
+    display: flex;
+    font-weight: 500;
+    gap:58.5%;
+
+    color: black;
+    text-align: left;
+}
 .bulk {
     background-color: white;
     height:35px;
@@ -74,4 +118,95 @@
     border-radius: 5px;
     border: 1px solid grey;
     width: 8%;
+}
+.headingProjsXYZ > div{
+    width: 10%;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: gray;
+}
+.fetchcontentXYZ > div{
+    width: 10%;
+    text-align: left;
+    color: black;
+    font-size: 13px;
+}
+.fetchcontentXYZ > span{
+    color: black;
+}
+.dot3btnProj{
+    visibility: hidden;
+}
+.whiterDiv{
+    width: 70%;
+    margin-left: 10px;
+    box-shadow: rgb(0 0 0 / 13%) 0px 2px 6px 0px;
+    border-radius: 8px;
+    min-width: 700px;
+    margin-top: -7px;
+}
+.whiterDiv > div > div > button {
+    font-size: 14px;
+    border: 1px solid gray;
+    outline: none;
+    color: gray;
+    font-weight: 500;
+    padding: 11px 30px;
+    border-radius: 10px;
+    margin-left: 74%;
+    margin-top: 10px;
+}
+.allMembRole{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.allMembRole > p{
+    padding: 0px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: gray;
+}
+.getNameManage{
+    display: flex;
+}
+.projClocked{
+    position: absolute;
+    top: 11vw;
+    right: 11vw;
+}
+.projClocked{
+    position: absolute;
+}
+#overProjView{
+    color: gray;
+    font-size: 15px;
+    font-weight: 500;
+}
+#clckHour{
+    color: gray;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+#clckHourTiming{
+    color: gray;
+    font-size: 23px;
+    font-weight: 500;
+    margin-top: 0px;
+    line-height: 36px;
+}
+.inside {
+    display:flex;
+    gap:10px;
+}
+.times{
+    display: flex;
+    gap:30px;
+    color: #7B7B7B
+}
+.showtime{
+    font-size: 30px;
 }
