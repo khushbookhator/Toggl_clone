@@ -1,5 +1,5 @@
 import { DriveEtaRounded } from "@material-ui/icons"
-import { useEffect } from "react"
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { getProject } from "../../Redux/Project/action"
 import { getTask } from "../../Redux/Title/action"

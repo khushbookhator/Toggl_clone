@@ -8,58 +8,69 @@ import { useSelector } from "react-redux";
 
 
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
-const today =  new Date()
-const date = today.getFullYear()+"-" + (today.getMonth() + 1) + '-' + today.getDate();
 
-var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-const chartData = [
+
+export const Something = () => {
+  const today =  new Date()
+  const task = useSelector(state => state.tasks.task)
+  const date = today.getFullYear()+"-" + (today.getMonth() + 1) + '-' + today.getDate();
+
+  var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+  const chartData = [
   {
     label: `${days[today.getDay()]}
     ${today.getMonth() + 1}/${today.getDate() - 6}`,
+    value: `${task.filter((item) => item.date === today.getFullYear()+"-"+(today.getMonth() + 1) + '-' + today.getDate() -6).reduce((acc, b) => acc + b.total_time, 0)/3600}`
   },
   {
     label: `${days[today.getDay()-5]}
     ${today.getMonth() + 1}/${today.getDate() - 5}`,
-    value: "9"
+    value: `${task.filter((item) => item.date === today.getDate() -5 + "-0" + (today.getMonth() + 1) + "-" + today.getFullYear()).reduce((acc, b) => acc + b.total_time, 0)/3600}`
   },
   {
     label: `${days[today.getDay()-4]}
     ${today.getMonth() + 1}/${today.getDate() - 4}`,
-    value: "10"
+    value: `${task.filter((item) => item.date === today.getDate() -4 + "-0" + (today.getMonth() + 1) + "-" + today.getFullYear()).reduce((acc, b) => acc + b.total_time, 0)/3600}`
   },
   {
     label: `${days[today.getDay()-3]}
     ${today.getMonth() + 1}/${today.getDate() - 3}`,
-    value: "14"
+    value: `${task.filter((item) => item.date === today.getDate() -3 + "-0" + (today.getMonth() + 1) + "-" + today.getFullYear()).reduce((acc, b) => acc + b.total_time, 0)/3600}`
   },
   {
     label: `${days[today.getDay()-2]}
     ${today.getMonth() + 1}/${today.getDate() - 2}`,
-    value: "5"
+    value: `${task.filter((item) => item.date === today.getDate() -2 + "-0" + (today.getMonth() + 1) + "-" + today.getFullYear()).reduce((acc, b) => acc + b.total_time, 0)/3600}`
   },
   {
     label: `${days[today.getDay()-1]}
     ${today.getMonth() + 1}/${today.getDate() - 1}`,
-    value: "1"
+    value: `${task.filter((item) => item.date === today.getDate() -1 + "-0" + (today.getMonth() + 1) + "-" + today.getFullYear()).reduce((acc, b) => acc + b.total_time, 0)/3600}`
   },
   {
     label: `${days[today.getDay()]}
     ${today.getMonth() + 1}/${today.getDate()}`,
-    value: "3"
+    value: `${task.filter((item) => item.date === today.getDate() + "-0" + (today.getMonth() + 1) + "-" + today.getFullYear()).reduce((acc, b) => acc + b.total_time, 0)/3600}`
   }
 ];
+  const chartConfigs = {
+    type: "column2d", 
+    width: "100%", 
+    height: "300", 
+    dataFormat: "json", 
+    dataSource: {
+      chart: {
+          theme: "fusion",
+          yAxisPosition: "right",
+          numberSuffix: "h"
+      },
+      data: chartData
+    }
+  };
+  return(
+    <ReactFC {...chartConfigs}/>
+  )
+} 
 
-export const chartConfigs = {
-  type: "column2d", 
-  width: "100%", 
-  height: "300", 
-  dataFormat: "json", 
-  dataSource: {
-    chart: {
-        theme: "fusion",
-        yAxisPosition: "right",
-        numberSuffix: "h"
-    },
-    data: chartData
-  }
-};
+
+

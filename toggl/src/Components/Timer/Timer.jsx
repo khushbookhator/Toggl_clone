@@ -15,7 +15,10 @@ import { getTime } from "../../Utils/timeFormat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import { ProgressLine } from "./ProgressLine";
+
+
 import { selectUser } from "../Login/userSlice";
+
 
 export function rand() {
   return Math.round(Math.random() * 20) - 10;

@@ -51,7 +51,7 @@ export const StopWatch=({title, projname})=>{
         setStatus(false)
 
         const today = new Date()
-        const date = today.getFullYear()+"-" + (today.getMonth() + 1) + '-' + today.getDate();
+        const date = today.getDate() + "-0" + (today.getMonth() + 1) + "-" + today.getFullYear();
         const payload = {
             title: title,
             date : date,
