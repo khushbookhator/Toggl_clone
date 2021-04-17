@@ -13,7 +13,7 @@ import { TimerData } from "./TimerData";
 import { getTask } from "../../Redux/Title/action";
 import { getTime } from "../../Utils/timeFormat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle, faInfoCircle, faTimes} from "@fortawesome/free-solid-svg-icons";
+import { faCircle} from "@fortawesome/free-solid-svg-icons";
 import { ProgressLine } from "./ProgressLine";
 
 function rand() {

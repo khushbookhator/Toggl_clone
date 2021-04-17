@@ -1,12 +1,22 @@
-.body{
+.bodylog{
     background-color: rgba(65,42,76,255);
+    margin-top: 5%;
+   
 }
-
+.container {
+    position: relative;
+    text-align: center;
+     width:100%;
+     opacity:0.5;
+  }
+.hidden{
+    display: none;
+}
 .main{
     background-color:rgba(44,19,56,255);
     width: 40%;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 3%;
     padding:20px;
     color: white;
     display: block;
@@ -18,29 +28,25 @@
     color: #FCE5D8;
     margin-bottom: 15px;
     padding-left: 10px;
+    margin-top: 5%;
+    opacity: 1;
+}
+.h2log{
+  
+    font-family: 'GT Haptik Medium',sans-serif;
     
 }
-.h1{
-  width: 100%;
-  font-family: 'GT Haptik Medium',sans-serif;
-    font-weight: 400;
-    font-size: 2rem;
-    line-height: 1.25;
-     
-    margin-bottom: 25px;
-    text-align: center;  
-}
-.h3{
+.h3log{
     font-family: 'Inter',sans-serif;
     font-weight: 400;
     font-size: 1.125rem;
     line-height: 1.333;
-    
+    margin-top: -5%;
     text-align: center;
     margin-bottom: 15px;
 }
 
-input{
+.input1log{
     background: transparent;
     border: 2px solid #ABA0AF;
     height: 40px;
@@ -56,7 +62,7 @@ input{
     color: #FCE5D8;
 }
 
-button{
+.btn2log{
     font-family: 'GT Haptik Medium',sans-serif;
     font-size: 1rem;
     padding: 14px 50px;
@@ -73,26 +79,20 @@ button{
     line-height: 1.28;
     
 }
- 
-button:hover{
+
+.btn2log:hover{
     background-color: rgba(65,42,76,255);
 }
-
-
-.google{
-    background-color: white;
-    width:250px;
-    color: black;
-}
-
-.googleimg{
-    width:20px;
-    height: 20px;
+ .google{
+     background-color: white;
+     width:250px;
+     color: black;
+     height: 50px;
+     border-radius: 20px;
+ }
+ 
    
-}
-
 .centered {
-   
     position: absolute;
     top: 50%;
     left: 50%;
@@ -100,12 +100,41 @@ button:hover{
     font-family: 'GT Haptik Medium',sans-serif;
     font-weight: 400;
     line-height: 1;
-    font-size: 50px;
+    font-size: 70px;
     color: white;
   }
-  .container {
-    position: relative;
+
+  .btnlog{
+      width: 150px;
+      font-family: 'GT Haptik Medium',sans-serif;
+      font-size: 1rem;
+      padding: 14px 50px;
+      background-color: #E57CD8;
+      color: #FFF;
+      text-align: center;
+      border-radius: 25px;
+      font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.28;
+  }
+
+  
+
+  .btn3log{
+    width: 500px;
+    font-family: 'GT Haptik Medium',sans-serif;
+    font-size: 1rem;
+    padding: 14px 50px;
+    background-color: white;
+    color:black;
     text-align: center;
-     width:100%;
-     opacity:0.5;
+    border-radius: 25px;
+    font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.28;
+}
+  .googleimg{
+      width:20px;
+      height: 20px;
+     
   }

@@ -5,8 +5,8 @@ import {Timer} from "../Components/Timer/Timer"
 import { Project } from "../Components/Project/Project";
 import { Reports } from "../Components/Reports/Reports";
 import { IndividualProject } from "../Components/Project/IndividulaProject";
-// import { Login } from "../Components/Login/Login";
-// import { Signup } from "../Components/Login/Signup";
+import { Login } from "../Components/Login/Login";
+import { Signup } from "../Components/Login/Signup";
  
 
 
@@ -25,12 +25,12 @@ function Routes() {
                     <Timer/>
                 </div>
                 </Route>
-                {/* <Route exact path="/login">
+                <Route exact path="/login">
                     <Login/>
                 </Route>
                 <Route exact path="/signup">
                     <Signup/>
-                </Route> */}
+                </Route>
                 <Route  exact path="/projects">
                 <div style={{
                     display:"flex"
