@@ -21,20 +21,22 @@ function IndividualProject() {
     return(
         <div className={projstyles.cont}>
             <div className={projstyles.first}>
-                <h3>Projects</h3>
-                <p>{`>`}</p>
-                <p>{individual.project_name}</p>
+                <div className={projstyles.inside}>
+                    <h3>Projects</h3>
+                    <h3>{`>`}</h3>
+                    <h3>{individual.project_name}</h3>
+                </div>
                 <button>Edit Project</button>
             </div>
             <div className={projstyles.second}>
                 <p>DASHBOARD</p>
                 <p>TEAM</p>
             </div>
-            <br/><br/>
+            <br/>
             <p>Only team members can see this project. You can make it visible to everyone or only to you. Privacy settings</p>
             <br/>
-            <div>
-                <div>
+            <div className={projstyles.times}>
+                <div className={projstyles.details}>
                     <div>
                         <button>+ Add Member</button>
                     </div>
@@ -48,13 +50,13 @@ function IndividualProject() {
                     </div>
                 </div>
                 <div>
-                    <h3>PROJECT OVERVIEW</h3>
+                    <h4>PROJECT OVERVIEW</h4>
                     <h5>CLOCKED HOURS</h5>
-                    <h1>
+                    <p className={projstyles.showtime}>
                         {
                             getTime(task.filter((items) => items.project_name.trim() === individual.project_name).reduce((acc, b) => acc + b.total_time, 0))
                         }
-                    </h1>
+                    </p>
                 </div>
             </div>
         </div>
