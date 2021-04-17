@@ -13,15 +13,15 @@ import { TimerData } from "./TimerData";
 import { getTask } from "../../Redux/Title/action";
 import { getTime } from "../../Utils/timeFormat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle,faTimes,faInfoCircle} from "@fortawesome/free-solid-svg-icons";
+import { faCircle, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import { ProgressLine } from "./ProgressLine";
 import { selectUser } from "../Login/userSlice";
 
-function rand() {
+export function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
 
-function  getModalStyle() {
+export function  getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
 
@@ -33,7 +33,7 @@ function  getModalStyle() {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
     width: 300,
@@ -57,11 +57,13 @@ export const Timer=()=>{
     const [colorNum, setColorNum] = useState("");
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
+
     const user = useSelector(state=>state)
     console.log(user)
     const payload = {
         title: text
     }
+
     const handleOpen = () => {
         setOpen(true);
     };
@@ -70,9 +72,12 @@ export const Timer=()=>{
     };
     const proj = useSelector(state => state.project.proj)
 
-    const dispatch = useDispatch();
+
+    const dispatch = useDispatch()
+
 
     const colorList = ["#33A7FF", "red", "limegreen",  "#E57CD8", "blue", "purple", "teal", "orange", "pink", "lightskyblue", "green", "brown", "violet", "maroon", "khaki", "blue", "red"];
+
 
     const handlePostProj= () => {
         const payload = {
@@ -85,7 +90,7 @@ export const Timer=()=>{
         handleClose()
     }
     const task = useSelector(state=> state.tasks.task)
-    React.useEffect(() => {
+    useEffect(() => {
         dispatch(getProject())
         dispatch(getTask())
     },[])
@@ -137,7 +142,7 @@ export const Timer=()=>{
                     >
                         <div style={modalStyle} className={classes.paper}>
                             <div>
-                            <p style={{marginTop:"0px", fontWeight:"500", fontSize:"14px"}}>Create new project {<FontAwesomeIcon style={{marginLeft:"150px"}} icon={faTimes}/>}</p>
+                            <p style={{marginTop:"0px", fontWeight:"500", fontSize:"14px"}}>Create new project {<FontAwesomeIcon onClick={handleClose} style={{marginLeft:"150px"}} icon={faTimes}/>}</p>
                             </div>
                             <div>
                                 <div>

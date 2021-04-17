@@ -6,8 +6,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTime } from '../../Utils/timeFormat';
 import { Link } from 'react-router-dom';
-import { deleteTask, getTask } from '../../Redux/Title/action';
-import { getProject } from '../../Redux/Project/action';
+import { deleteTask } from '../../Redux/Title/action';
 import timerstyles from "./timer.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faDollarSign } from '@fortawesome/free-solid-svg-icons';
@@ -60,6 +59,7 @@ function TimerData() {
                         <div class={timerstyles.dollarContentIcon} id={`${i}dollarWalaIcon`}>{<FontAwesomeIcon icon={faDollarSign}/>}</div>
                         <div className={timerstyles.titleTimeContent}>{`${item.start_time}-${item.end_time}`}</div>
                         <div className={timerstyles.totalTimeContent}>{getTime(item.total_time)}</div>
+
 
                         <div>
                             <IconButton

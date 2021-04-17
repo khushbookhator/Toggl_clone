@@ -4,12 +4,13 @@ import { getTask } from '../../Redux/Title/action';
 import React from "react"
 import { getProject } from '../../Redux/Project/action';
 import piestyle from "./pie.module.css"
+import { getTime } from './../../Utils/timeFormat';
 
 export function PieCrt(){
 
-    const task = useSelector(state=> state.tasks.task)
-    const total_time = task.reduce((acc, b) => acc + b.total_time, 0)
-    const proj = useSelector(state=> state.project.proj)
+        const task = useSelector(state=> state.tasks.task)
+        const total_time = task.reduce((acc, b) => acc + b.total_time, 0)
+        const proj = useSelector(state=> state.project.proj)
     const dispatch=useDispatch()
 
     React.useEffect(() => {
@@ -32,7 +33,7 @@ export function PieCrt(){
                         {
                             proj.map((item) => <tr className={piestyle.tableetr} key={item.id}>
                                 <td  className={piestyle.titletd}>{item.project_name}</td>
-                                <td  className={piestyle.durationtd}>{task.filter((items) => items.project_name.trim() === item.project_name).reduce((acc, b) => acc + b.total_time, 0)}</td>
+                                <td  className={piestyle.durationtd}>{getTime(task.filter((items) => items.project_name.trim() === item.project_name).reduce((acc, b) => acc + b.total_time, 0))}</td>
                                 <td>{Math.round((task.filter((items) => items.project_name.trim() === item.project_name).reduce((acc, b) => acc + b.total_time, 0)*100)/total_time)}%</td>
                             </tr>)
                         }
