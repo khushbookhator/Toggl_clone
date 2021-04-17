@@ -1,31 +1,26 @@
-import React , { useState } from 'react'
+import React , { useRef, useState } from 'react'
 import loginstyles from './Login.module.css'
 import   {auth, google} from './firebase'
+import { useHistory } from 'react-router'
 function Login(){
-
-  
-  const [password, setPassword] = useState("null");
-  const [email, setEmail] = useState("null");
-   
-  const logingoogle = ()=>{
-    auth.signInWithPopup(google)
-    .then(resp => console.log(resp))
-    .catch((err) => console.log(err));
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
+    const history  = useHistory()
+ 
+  const signIn=(e)=>{
+    e.preventDefault();
+    auth.signInWithEmailAndPassword(
+       emailRef.current.value,
+       passwordRef.current.value 
+    ).then((authUser)=>{
+        if(authUser){
+          history.push("/timer")
+        }
+    }).catch((error)=>{
+        alert(error.message)
+    })
   }
-
- function Log(){
-    {
-        auth.createUserWithEmailAndPassword(email, password)
-
-          .then(function (response) {
-            console.log(response.user);
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-      }
- }
-
+  
     return(
         
         <div className={loginstyles.body}>
@@ -38,10 +33,6 @@ function Login(){
               <h3 className={loginstyles.h3log}>Let's get Tracking!</h3>
                 </div>
             </div>
-
-
-
-    
      <div>
       
    </div>
@@ -50,24 +41,24 @@ function Login(){
         
       <form>
 
-      <button className={loginstyles.google}  onClick={logingoogle}> <img className={loginstyles.googleimg} src="https://img.icons8.com/color/452/google-logo.png" alt="google"/>Signup via Google</button>
+      <button className={loginstyles.google}  > <img className={loginstyles.googleimg} src="https://img.icons8.com/color/452/google-logo.png" alt="google"/>Signup via Google</button>
                <button className={loginstyles.google}> <img className={loginstyles.googleimg} src="https://cdn.iconscout.com/icon/free/png-256/apple-853-675472.png" alt="apple"/> Sign up via Apple</button>
 
           <div>
           <label>Email </label><br/>
-        <input className={loginstyles.input1log} type="text" placeholder="Email" onChange={(e)=> setEmail(e.target.value)}/> 
+        <input className={loginstyles.input1log} type="text" placeholder="Email" ref={emailRef}/> 
          </div>
  
           <div>
               <label>Password</label><br/>
-              <input className={loginstyles.input1log} type="text" placeholder="Password" onChange={(e)=> setPassword(e.target.value)}/>
+              <input className={loginstyles.input1log} type="text" placeholder="Password" ref = {passwordRef}/>
           </div>
            <div style={{textAlign:"right", paddingTop:"50px", marginRight:"50px"}}>
                 <span>Forgot Password?</span>
            </div>
           <div>
 
-               <button className={loginstyles.btn2log} onClick={Log}>Log in</button>
+               <button className={loginstyles.btn2log} onClick={signIn}>Log in</button>
           </div>
        </form>
  </div>
