@@ -1,0 +1,19 @@
+.tablecont{
+    width: 60%;
+    margin-left: 30px;
+    padding: 20px;
+    background-color: white;
+}
+.piechrtcont{
+    width: 20%;
+}
+.tableetr>td{
+    padding: 10px;
+    padding-left: 30px;
+    border-bottom: 1px solid rgb(177, 177, 177) ;
+}
+.titletd{
+    width: 70%;
+    text-align:left ;
+    padding-left: 30px;
+}
