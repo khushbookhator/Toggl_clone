@@ -138,6 +138,9 @@
 }
 .dot3btnProj{
     visibility: hidden;
+    width: 15px;
+    position: relative;
+    left: 9vw;
 }
 .whiterDiv{
     width: 70%;
@@ -219,4 +222,16 @@
 .searchInput > input{
     height: 23px;
     width: 200px;
+}
+.delWaliList{
+    visibility: hidden;
+    position: relative;
+    top: 4vw;
+    right: 0vw;
+    transition: opacity .3s;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px 0 #d5d0d7;
+    background: #fff;
+    margin-top: 5px;
 }

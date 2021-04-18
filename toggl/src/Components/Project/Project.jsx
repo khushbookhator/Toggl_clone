@@ -7,11 +7,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle, faEllipsisV, faSearch, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import Modal from '@material-ui/core/Modal';
 import {getModalStyle, useStyles} from '../Timer/Timer';
-import { getProject, postProject } from './../../Redux/Project/action';
+import { deleteProject, getProject, postProject } from './../../Redux/Project/action';
 
 
 
 function Project() {
+    const [delList, setDelList] = React.useState(false);
+    const handleDelete=(id)=>{
+        dispatch(deleteProject(id))
+    }
+
     const [createProjectName,setCreateProjectName] = React.useState("")
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
@@ -77,6 +82,15 @@ function Project() {
         }
         dispatch(postProject(payload)).then(() => dispatch(getProject()))
         handleClose()
+    }
+
+    const handleShowListIcons = (id) => {
+        setDelList(!delList);
+        if(document.getElementById(id).style.visibility === "hidden"){
+            document.getElementById(id).style.visibility = "visible";
+        }else{
+            document.getElementById(id).style.visibility = "hidden";
+        }
     }
 
 
@@ -168,7 +182,7 @@ function Project() {
                         <div style={{marginRight:"50px"}}>TEAM</div>
                     </div>
                     { activation ? (
-                        proj?.filter(item => item.project_name.includes(projSearch)).map((item, i) => 
+                        proj?.filter(item => item.project_name.toLowerCase().includes(projSearch.toLowerCase())).map((item, i) => 
                         <Link style={{textDecoration:"none"}} to={`/projects/${item.id}`}>
                         <div onMouseLeave={() => handleLeave(i)} onMouseOver={() => handleHover(i)} id={i} className={projstyles.fetchcontentXYZ} style={{
                             display:"flex",
@@ -179,12 +193,17 @@ function Project() {
                             verticalAlign: "middle",
                             alignItems: "center"
                         }}>
-                            <div> {<FontAwesomeIcon style={{fontSize:"8px", marginRight:"10px", opacity:"0.5"}} icon={faCircle}/>} {item.project_name}</div>
-                            <div style={{marginLeft:"290px"}}>{item.client}</div>
-                            <div>{
-                                Math.floor((task.filter((items) => items.project_name === item.project_name).reduce((acc, b) => acc + b.total_time, 0))/3600)} h</div>
-                            <div>{item.team}</div>
-                            <span id={`${i}dot3btnProj`} className={projstyles.dot3btnProj}><FontAwesomeIcon icon={faEllipsisV}/></span>
+                            <div style={{width:"180px"}}> {<FontAwesomeIcon style={{fontSize:"8px", marginRight:"10px", opacity:"0.5", marginLeft:"20px"}} icon={faCircle}/>} {item.project_name}</div>
+                                    <div style={{marginLeft:"300px"}}>{item.client}</div>
+                                    <div style={{width:"50px", marginLeft:"100px"}}>{
+                                        Math.floor((task.filter((items) => items.project_name === item.project_name).reduce((acc, b) => acc + b.total_time, 0))/3600)} h</div>
+                                    <div style={{marginLeft:"80px", paddingLeft:"20px", boxSizing:"border-box"}}>{item.team}</div>
+                                    <span onClick={(e) => {e.preventDefault() ;e.stopPropagation(); handleShowListIcons(`deleteList${i}`)}} id={`${i}dot3btnProj`} className={projstyles.dot3btnProj}><FontAwesomeIcon style={{padding:"0px 10px"}} icon={faEllipsisV}/></span>
+                                    <div style={{width:"150px", textAlign:"center"}} id={`deleteList${i}`} className={projstyles.delWaliList}>
+                                        <button style={{color:"red" ,border:"none", outline:"none", fontSize:"16px", backgroundColor:"transparent", padding:"5px", paddingTop:"15px", cursor:"pointer"}} onClick={(e)=>{e.preventDefault(); e.stopPropagation(); handleDelete(item.id);}}>Delete</button>
+                                        <div style={{padding:"0px 15px 15px 15px"}}>
+                                          <Link style={{textDecoration:"none", color:"purple", fontSize:"16px", backgroundColor:"transparent", cursor:"pointer"}} to={`/projects/${item.id}`}>Go to project</Link></div>
+                                    </div>
                         </div>
                         </Link>
                 )
@@ -195,17 +214,22 @@ function Project() {
                                     display:"flex",
                                     height:"40px",
                                     width:"100%",
-                                    justifyContent:"space-evenly",
+                                    justifyContent:"space-between",
                                     borderBottom:"1px solid #8080806e",
                                     verticalAlign: "middle",
                                     alignItems: "center"
                                 }}>
-                                    <div> {<FontAwesomeIcon style={{fontSize:"8px", marginRight:"10px", opacity:"0.5"}} icon={faCircle}/>} {item.project_name}</div>
-                                    <div style={{marginLeft:"290px"}}>{item.client}</div>
-                                    <div>{
+                                    <div style={{width:"180px"}}> {<FontAwesomeIcon style={{fontSize:"8px", marginRight:"10px", opacity:"0.5", marginLeft:"20px"}} icon={faCircle}/>} {item.project_name}</div>
+                                    <div style={{marginLeft:"300px"}}>{item.client}</div>
+                                    <div style={{width:"50px", marginLeft:"100px"}}>{
                                         Math.floor((task.filter((items) => items.project_name === item.project_name).reduce((acc, b) => acc + b.total_time, 0))/3600)} h</div>
-                                    <div>{item.team}</div>
-                                    <span id={`${i}dot3btnProj`} className={projstyles.dot3btnProj}><FontAwesomeIcon icon={faEllipsisV}/></span>
+                                    <div style={{marginLeft:"80px", paddingLeft:"20px", boxSizing:"border-box"}}>{item.team}</div>
+                                    <span onClick={(e) => {e.preventDefault() ;e.stopPropagation(); handleShowListIcons(`deleteList${i}`)}} id={`${i}dot3btnProj`} className={projstyles.dot3btnProj}><FontAwesomeIcon style={{padding:"0px 10px"}} icon={faEllipsisV}/></span>
+                                    <div style={{width:"150px", textAlign:"center"}} id={`deleteList${i}`} className={projstyles.delWaliList}>
+                                        <button style={{color:"red" ,border:"none", outline:"none", fontSize:"16px", backgroundColor:"transparent", padding:"5px", paddingTop:"15px", cursor:"pointer"}} onClick={(e)=>{e.preventDefault(); e.stopPropagation(); handleDelete(item.id);}}>Delete</button>
+                                        <div style={{padding:"0px 15px 15px 15px"}}>
+                                          <Link style={{textDecoration:"none", color:"purple", fontSize:"16px", backgroundColor:"transparent", cursor:"pointer"}} to={`/projects/${item.id}`}>Go to project</Link></div>
+                                    </div>
                                 </div>
                                 </Link>
                         ))}
