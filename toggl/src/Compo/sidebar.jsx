@@ -67,9 +67,31 @@ function Sidebar() {
                 <NavLink className={barstyles.links} to="/subscription">Subscription</NavLink>
             </div>
             <p>WORKSPACE</p>
-            <button onClick={handleLogout}>Sign Out</button>
-            <h1>{userName}</h1>
-            <img src={profilePic} alt=""/>
+            <div style={{
+                display:"flex",
+                gap:"2px",
+                height:"40px"
+            }}>
+                <img style={{
+                    borderRadius:"50%",
+
+                }} src={profilePic} alt=""/>
+                <p style={{
+                    color:"white",
+                    marginTop:"5px"
+                }}>{userName}</p>
+            </div>
+                <button style={{
+                    background:"transparent",
+                    width:"80%",
+                    color:"white",
+                    margin:"auto",
+                    marginTop:"8px",
+                    border:"1px solid white",
+                    borderRadius:"5px",
+                    height:"35px"
+                }} onClick={handleLogout}>Sign Out</button>
+            
         </div>
     )
 }
