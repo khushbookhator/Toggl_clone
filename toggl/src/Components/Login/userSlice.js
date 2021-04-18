@@ -1,3 +1,6 @@
+import { loadData, saveData } from "../../Utils/LocalStorage"
+import { auth } from "./firebase"
+
 const LOGIN = "LOGIN"
 const LOGOUT = "LOGOUT"
 
@@ -13,22 +16,31 @@ export const trackLogout = () => {
       type: LOGOUT,
   }
 } 
-const init = {
-  user:null
+const init = loadData("userData")||{
+  userData:null,
+  isAuth:false
 }
 
 export const userReducer = (state=init,action)=>{
   switch (action.type) {
-    case LOGIN:
-      return{
-        ...state,
-        user:action.payload
+    case LOGIN:{
+      const updateState = {
+          ...state,
+          isAuth : true,
+          userData : action.payload
       }
-    case LOGOUT:
-      return{
-        ...state,
-        user:null
-      }  
+     saveData("userData",updateState)
+      return updateState
+  }
+    case LOGOUT: {
+      const updateState = {
+          ...state,
+          isAuth : false,
+          userData : {},
+      }
+      saveData("userData",updateState)
+      return updateState
+  }
     default:
       return state
   }

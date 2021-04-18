@@ -20,11 +20,7 @@ function Login(){
        passwordRef.current.value 
     ).then((authUser)=>{
         dispatch(trackLogin(authUser))
-        if(authUser){
           history.push("/timer")
-        }
-    }).catch((error)=>{
-        alert(error.message)
     })
   }
   const handleGoogleSingIn =(e)=>{
@@ -36,7 +32,6 @@ function Login(){
       dispatch(trackLogin(user))
       history.push("/timer")
     }).catch((error) => {
-      dispatch(trackLogout(error.message))
       alert("wrong credentials")
     });
   
