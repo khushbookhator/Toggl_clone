@@ -1,24 +1,42 @@
 import React , { useRef, useState } from 'react'
 import loginstyles from './Login.module.css'
-import   {auth, google} from './firebase'
+import   {auth} from './firebase'
+import firebase from "firebase/app"
 import { useHistory } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { trackLogin, trackLogout } from './userSlice'
 function Login(){
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
     const history  = useHistory()
- 
+  const dispatch = useDispatch()
   const signIn=(e)=>{
     e.preventDefault();
     auth.signInWithEmailAndPassword(
        emailRef.current.value,
        passwordRef.current.value 
     ).then((authUser)=>{
+        dispatch(trackLogin(authUser))
         if(authUser){
           history.push("/timer")
         }
     }).catch((error)=>{
         alert(error.message)
     })
+  }
+  const handleGoogleSingIn =(e)=>{
+    e.preventDefault()
+    var provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+    .then((result) => {
+       const user = result.user;
+      dispatch(trackLogin(user))
+      history.push("/timer")
+    }).catch((error) => {
+      dispatch(trackLogout(error.message))
+      alert("wrong credentials")
+    });
+  
   }
   
     return(
@@ -41,7 +59,7 @@ function Login(){
         
       <form>
 
-      <button className={loginstyles.google}  > <img className={loginstyles.googleimg} src="https://img.icons8.com/color/452/google-logo.png" alt="google"/>Signup via Google</button>
+      <button onClick={handleGoogleSingIn} type="submit" className={loginstyles.google}  > <img className={loginstyles.googleimg} src="https://img.icons8.com/color/452/google-logo.png" alt="google"/>Signup via Google</button>
                <button className={loginstyles.google}> <img className={loginstyles.googleimg} src="https://cdn.iconscout.com/icon/free/png-256/apple-853-675472.png" alt="apple"/> Sign up via Apple</button>
 
           <div>
@@ -58,7 +76,7 @@ function Login(){
            </div>
           <div>
 
-               <button className={loginstyles.btn2log} onClick={signIn}>Log in</button>
+               <button type="submit" className={loginstyles.btn2log} onClick={signIn}>Log in</button>
           </div>
        </form>
  </div>

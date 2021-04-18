@@ -16,10 +16,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import { ProgressLine } from "./ProgressLine";
 
-
-import { selectUser } from "../Login/userSlice";
-
-
 export function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -60,28 +56,16 @@ export const Timer=()=>{
     const [colorNum, setColorNum] = useState("");
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
-
-    const user = useSelector(state=>state)
-    console.log(user)
-    const payload = {
-        title: text
-    }
-
+    const proj = useSelector(state => state.project.proj)
+    const task = useSelector(state=> state.tasks.task)
+    const dispatch = useDispatch()
     const handleOpen = () => {
         setOpen(true);
     };
     const handleClose = () => {
       setOpen(false);
     };
-    const proj = useSelector(state => state.project.proj)
-
-
-    const dispatch = useDispatch()
-
-
     const colorList = ["#33A7FF", "red", "limegreen",  "#E57CD8", "blue", "purple", "teal", "orange", "pink", "lightskyblue", "green", "brown", "violet", "maroon", "khaki", "blue", "red"];
-
-
     const handlePostProj= () => {
         const payload = {
             project_name : createProjectName,
@@ -92,12 +76,10 @@ export const Timer=()=>{
         dispatch(postProject(payload)).then(() => dispatch(getProject()))
         handleClose()
     }
-    const task = useSelector(state=> state.tasks.task)
     useEffect(() => {
         dispatch(getProject())
         dispatch(getTask())
-    },[])
-
+    },[dispatch])
     return(
         <div className={timerstyles.bgpage}>
             <div className={timerstyles.container}>
@@ -201,8 +183,6 @@ export const Timer=()=>{
             <div>
                 <TimerData/>
             </div>
-
-
         </div>
     )
 }
