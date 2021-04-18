@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { GET_PROJECT_SUCCESS, GET_PROJECT_FAILURE, GET_PROJECT_REQ, POST_PROJECT_FAILURE, POST_PROJECT_SUCCESS, POST_PROJECT_REQ, GET_INDIVIDUAL_PROJ_SUCCESS, GET_INDIVIDUAL_PROJ_REQ } from './actiontype';
+import { GET_PROJECT_SUCCESS, GET_PROJECT_FAILURE, GET_PROJECT_REQ, POST_PROJECT_FAILURE, POST_PROJECT_SUCCESS, POST_PROJECT_REQ, GET_INDIVIDUAL_PROJ_SUCCESS, GET_INDIVIDUAL_PROJ_REQ, DELETE_PROJECT_SUCCESS, DELETE_PROJECT_FAILURE, DELETE_PROJECT_REQ } from './actiontype';
 
 const { REACT_APP_BASE_URL } = process.env;
 
@@ -68,6 +68,30 @@ export const getIndividualProjReq = () => {
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
+export const deleteProjectSuccess = id => {
+    return{
+        type: DELETE_PROJECT_SUCCESS,
+        id
+    }
+}
+
+export const deleteProjectFailure= err => {
+    return{
+        type: DELETE_PROJECT_FAILURE,
+        data: err
+    }
+    
+}
+
+export const deleteProjectReq = () => {
+    return{
+        type: DELETE_PROJECT_REQ,
+    }
+}
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
 export const postProject = (payload) => (dispatch) => {
     dispatch(postProjectReq())
     return axios.post(`${REACT_APP_BASE_URL}/project`, payload, {
@@ -97,3 +121,13 @@ export const getIndividualProject = (id) => (dispatch) => {
     .then((res) => dispatch(getIndividualProjSuccess(res.data)))
 }
 
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+export const deleteProject = (id) => (dispatch) => {
+    dispatch(deleteProjectReq())
+    return axios.delete(`${REACT_APP_BASE_URL}/project/${id}`)
+    .then((res) => dispatch(deleteProjectSuccess(res.data)))
+    .then(() => dispatch(getProject()))
+}
