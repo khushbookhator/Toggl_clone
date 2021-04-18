@@ -9,9 +9,8 @@ export function PrivateRoute({children,
     redirectPath="/",
     push=false}){
         
-        const user = useSelector(state=>state.user.user) 
- 
-        return user?(
+        const isAuth = useSelector(state=>state.user.isAuth) 
+        return isAuth?(
             <Route path={path} exact={exact}>
                 {children}
             </Route>

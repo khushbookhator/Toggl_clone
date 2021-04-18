@@ -11,8 +11,8 @@ export function PieCrt(){
         const task = useSelector(state=> state.tasks.task)
         const total_time = task.reduce((acc, b) => acc + b.total_time, 0)
         const proj = useSelector(state=> state.project.proj)
-    const dispatch=useDispatch()
-
+        const dispatch=useDispatch()
+        const colors = ["#3096DF", "#412A4C", "#CECECE", "#E57CD8", "#422A4C", "#DFDFFF", "#FFE4A7", "violet", "lightskyblue", "mediumslateblue", "palevioletred", "rebeccapurple", "black", "tomato", "red"]
     React.useEffect(() => {
         dispatch(getTask())
         dispatch(getProject())
@@ -44,7 +44,7 @@ export function PieCrt(){
         <div className={piestyle.piechrtcont}>
         <PieChart
             data={
-                proj.map(item=>{return{title:item.project_name,value:Math.round((task.filter((items) => items.project_name.trim() === item.project_name).reduce((acc, b) => acc + b.total_time, 0)*100)/total_time),color:`#${Math.floor(Math.random()*16777215).toString(16)}`}})
+                proj.map(item=>{return{title:item.project_name,value:Math.round((task.filter((items) => items.project_name.trim() === item.project_name).reduce((acc, b) => acc + b.total_time, 0)*100)/total_time),color:`${colors[Math.floor(Math.random() * colors.length)]}`}})
             }
             animate="true"
             lineWidth="40"

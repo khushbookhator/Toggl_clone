@@ -54,14 +54,18 @@ function TimerData() {
     return(
         <>
             {
-                Object.keys(obj).map((itemss, i) => 
+                Object.keys(obj).map((itemss) => 
                 <>
-                    <div>{itemss}</div>
-                    <div>{
-                        getTime(task?.filter((it) => it.date === itemss).reduce((acc, b) => acc + b.total_time, 0))
-                        }</div>
+                    <div style={{display:"flex",justifyContent:"space-between",padding:"10px"}}>
+                        <h2>{itemss}</h2>
+                        <h2>
+                            {
+                                getTime(task?.filter((it) => it.date === itemss).reduce((acc, b) => acc + b.total_time, 0))
+                            }
+                        </h2>
+                    </div>
                     {
-                        task?.filter((items) => items.date === itemss).map((item) => {return(
+                        task?.filter((items) => items.date === itemss).map((item,i) => {return(
                             <div id={i} onMouseLeave={() => handleLeave(i)} onMouseOver={() => handleHover(i)} className={timerstyles.DownnContentMain} key={item.id} style={{
                                 display:"flex",
                                 justifyContent:"space-evenly",
@@ -92,7 +96,7 @@ function TimerData() {
                                         open={open}
                                         onClose={handleClose}>
                                         <MenuItem onClick={()=>handleDelete(item.id)}>
-                                          Delete
+                                          Delete{item.id}
                                         </MenuItem>
                                         <MenuItem onClick={handleClose}>
                                           <Link to="/projects">Go to project</Link>
