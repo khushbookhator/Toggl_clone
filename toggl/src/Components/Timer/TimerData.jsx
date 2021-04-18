@@ -54,7 +54,7 @@ function TimerData() {
     return(
         <>
             {
-                Object.keys(obj).map((itemss) => 
+                Object.keys(obj).sort((a,b)=>a<b ?1:-1).map((itemss,i) => 
                 <>
                     <div style={{
                         width:"95%",
@@ -68,23 +68,23 @@ function TimerData() {
                         </h4>
                     </div>
                     {
-                        task?.filter((items) => items.date === itemss).map((item,i) => {return(
-                            <div id={i} onMouseLeave={() => handleLeave(i)} onMouseOver={() => handleHover(i)} className={timerstyles.DownnContentMain} key={item.id} style={{
+                        task?.filter((items) => items.date === itemss).map((item,j) => {return(
+                            <div id={i+j} onMouseLeave={() => handleLeave(i+j)} onMouseOver={() => handleHover(i+j)} className={timerstyles.DownnContentMain} key={item.id} style={{
                                 display:"flex",
                                 justifyContent:"space-evenly",
                                 cursor:"pointer"
                             }}>
                                 <div className={timerstyles.titleDownnContent}>{item.title}</div>
                                 <div className={timerstyles.projectNameContent}> {<FontAwesomeIcon style={{opacity:"0.5", fontSize:"7px", marginRight:"5px"}} icon={faCircle}/>} {item.project_name.toUpperCase()}</div>
-                                <div id={`${i}tagWalaIcon`} class={timerstyles.taggContentIcon}><img src="https://img.icons8.com/plumpy/24/000000/price-tag.png" alt="preview"/></div>
-                                <div class={timerstyles.dollarContentIcon} id={`${i}dollarWalaIcon`}>{<FontAwesomeIcon icon={faDollarSign}/>}</div>
+                                <div id={`${i+j}tagWalaIcon`} class={timerstyles.taggContentIcon}><img src="https://img.icons8.com/plumpy/24/000000/price-tag.png" alt="preview"/></div>
+                                <div class={timerstyles.dollarContentIcon} id={`${i+j}dollarWalaIcon`}>{<FontAwesomeIcon icon={faDollarSign}/>}</div>
                                 <div className={timerstyles.titleTimeContent}>{`${item.start_time}-${item.end_time}`}</div>
                                 <div className={timerstyles.totalTimeContent}>{getTime(item.total_time)}</div>
         
         
                                 <div>
                                     <IconButton
-                                    id={`${i}dot3btn`}
+                                    id={`${i+j}dot3btn`}
                                         className={timerstyles.dot3btn}
                                         aria-haspopup="true"
                                         onClick={handleClick}

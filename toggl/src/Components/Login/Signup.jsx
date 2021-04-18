@@ -29,7 +29,8 @@ function Signup(){
              alert(error.message)
          })
         }
-        const onSubmit =()=>{
+        const onSubmit =(e)=>{
+            e.preventDefault()
             var provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider)
             .then((result) => {

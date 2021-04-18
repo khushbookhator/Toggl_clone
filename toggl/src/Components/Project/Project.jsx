@@ -46,6 +46,7 @@ function Project() {
     }
     useEffect(() => {
         dispatch(getTask())
+        dispatch(getProject())
     },[])
 
     const handleHover = (i) => {
