@@ -2,6 +2,8 @@ import React , { useRef, useState } from 'react'
 import loginstyles from './Login.module.css'
 import   {auth, google} from './firebase'
 import { useHistory } from 'react-router'
+import { Footer } from '../Home/HomeComponents/Footer'
+import { Navbar } from '../Home/HomeComponents/Navbar'
 function Login(){
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
@@ -23,47 +25,49 @@ function Login(){
   
     return(
         
-        <div className={loginstyles.body}>
+        <div className={loginstyles.cont}>
  
- <div className={loginstyles.container}  >
-              <img width="100%" height="450px"      src="https://public-assets.toggl.com/b/static/a848ad9070fcf959a459fa1e878d2abb/c0583/hero-laptops.jpg" alt="laptop"  />
+            <div className={loginstyles.wrap}  >
               
-              <div className={loginstyles.centered}>
-              <h2 className={loginstyles.h2log} >Log in to your account</h2> 
-              <h3 className={loginstyles.h3log}>Let's get Tracking!</h3>
-                </div>
+              <Navbar/>
+              {/* <img className={loginstyles.imgs}  src="https://public-assets.toggl.com/b/static/a848ad9070fcf959a459fa1e878d2abb/c0583/hero-laptops.jpg" alt="laptop"/> */}
             </div>
-     <div>
-      
-   </div>
+            <div className={loginstyles.centered}>
+              <h3 className={loginstyles.h2log} >Log in to your account</h3> 
+              <h3 className={loginstyles.h3log}>Let's get Tracking!</h3>
+            </div>
          
     <div className={loginstyles.main}>
         
       <form>
-
-      <button className={loginstyles.google}  > <img className={loginstyles.googleimg} src="https://img.icons8.com/color/452/google-logo.png" alt="google"/>Signup via Google</button>
+            <div className={loginstyles.top}>
+              <button className={loginstyles.google}  > <img className={loginstyles.googleimg} src="https://img.icons8.com/color/452/google-logo.png" alt="google"/>Signup via Google</button>
                <button className={loginstyles.google}> <img className={loginstyles.googleimg} src="https://cdn.iconscout.com/icon/free/png-256/apple-853-675472.png" alt="apple"/> Sign up via Apple</button>
-
-          <div>
-          <label>Email </label><br/>
-        <input className={loginstyles.input1log} type="text" placeholder="Email" ref={emailRef}/> 
-         </div>
- 
-          <div>
+            </div>
+            <br/><br/><br/><br/>
+          <div className={loginstyles.forms}>
+              <label>Email </label><br/>
+              <input type="text" placeholder="Email" ref={emailRef}/> <br/>
               <label>Password</label><br/>
-              <input className={loginstyles.input1log} type="text" placeholder="Password" ref = {passwordRef}/>
+              <input type="text" placeholder="Password" ref = {passwordRef}/>
           </div>
-           <div style={{textAlign:"right", paddingTop:"50px", marginRight:"50px"}}>
-                <span>Forgot Password?</span>
+           <div style={{
+             textAlign:"right"
+           }}>
+                <span className={loginstyles.forgot}>Forgot Password?</span>
            </div>
+           <br/>
           <div>
-
                <button className={loginstyles.btn2log} onClick={signIn}>Log in</button>
           </div>
        </form>
- </div>
-
-
+       </div>
+       <div className={loginstyles.bottom}>
+         <p>Don't have an account?</p>
+         <button>Sign up for free</button>
+         <br/><br/><br/>
+       </div>
+           <Footer/>
         </div>
     )
 }
