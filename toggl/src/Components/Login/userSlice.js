@@ -1,19 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit';
+const LOGIN = "LOGIN"
+const LOGOUT = "LOGOUT"
 
-export const userSlice = createSlice({
-  name: 'user',
-  initialState: {
-    user: null,
-  },   
-  reducers: {
-   tracklogin:(state,action)=>{
-     state.user = action.payload;
-   },
-   tracklogout:(state)=>{
-     state.user=null;
-   }
-  },
-});
-export const { tracklogin, tracklogout } = userSlice.actions;
-export const selectUser = (state) => state.user.user;
-export default userSlice.reducer;
+export const trackLogin = (data) => {
+  return{
+      type: LOGIN,
+      payload:data
+  }
+} 
+
+export const trackLogout = () => {
+  return{
+      type: LOGOUT,
+  }
+} 
+const init = {
+  user:null
+}
+
+export const userReducer = (state=init,action)=>{
+  switch (action.type) {
+    case LOGIN:
+      return{
+        ...state,
+        user:action.payload
+      }
+    case LOGOUT:
+      return{
+        ...state,
+        user:null
+      }  
+    default:
+      return state
+  }
+}
