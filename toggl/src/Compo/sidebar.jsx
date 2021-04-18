@@ -10,7 +10,8 @@ function Sidebar() {
     const user = useSelector(state=>state.user.user)
     useEffect(()=>{
         const unsubscribe = auth.onAuthStateChanged((userAuth)=>{
-          if(userAuth){
+          
+            if(userAuth){
             dispatch(
               trackLogin(
                 {   
