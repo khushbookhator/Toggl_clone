@@ -1,8 +1,9 @@
 import ReactFC from "react-fusioncharts";
 import { useSelector } from "react-redux";
-import { MyComponent, Something} from "./BarGraph"
+import { MyComponent, BarGraphData} from "./BarGraph"
 import { PieCrt } from "./Pie"
 import reportstyle from "./reports.module.css"
+import { getTime } from './../../Utils/timeFormat';
 
 
 function Reports() {
@@ -37,10 +38,12 @@ function Reports() {
                     </button>
                 </div>
                 <div>
-                    {/* <ReactFC {...chartConfigs}/> */}
-                    <Something/>
+                    <BarGraphData/>
                 </div>
                 <br/>
+                <div>
+                    
+              </div>
                 <div style={{
                    display:"flex",
                    justifyContent:"space-between"
