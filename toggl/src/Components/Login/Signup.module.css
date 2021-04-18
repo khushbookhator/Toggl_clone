@@ -1,30 +1,47 @@
-.bodylog{
-    background-color: rgba(65,42,76,255);
-    margin-top: 5%;
-   
-}
+
 .container {
-    position: relative;
     text-align: center;
      width:100%;
-     opacity:0.5;
-  }
+     height:550px;
+     background-image: url("https://public-assets.toggl.com/b/static/a848ad9070fcf959a459fa1e878d2abb/c0583/hero-laptops.jpg");
+  } 
 .hidden{
     display: none;
 }
+.middle{
+    width:100%;
+    margin:auto;
+    margin-left: 5%;
+    padding: 3%;
+}
+.formed {
+    width:100%;
+    margin:auto;
+}
+.bottom > button {
+    width:15%;
+    justify-content: center;
+    height:45px;
+    border-radius: 15px;
+    background-color: rgb(229,124,216);
+    color: white;
+    margin-bottom: 5%;
+}
+.bottom {
+    text-align: center;
+}
 .main{
     background-color:rgba(44,19,56,255);
-    width: 40%;
+    padding:5%;
+    width: 45%;
     margin: auto;
-    margin-top: 3%;
-    padding:20px;
     color: white;
     display: block;
     text-align: left;
     font-family: 'Inter',sans-serif;
     font-weight: 400;
     font-size: 1.125rem;
-    line-height: 1.333;
+    line-height: 4;
     color: #FCE5D8;
     margin-bottom: 15px;
     padding-left: 10px;
@@ -55,15 +72,13 @@
     background: transparent;
     border: 2px solid #ABA0AF;
     height: 40px;
-    width: 500px;
-   margin-top: 5px;
-    border-color: rgb(246, 108, 108);
+    width: 86%;
+    margin-top: 0px;
+    border-color: white;
     padding-left: 15px;
-    caret-color: #2C1338;
     font-family: 'Inter',sans-serif;
     font-weight: 400;
     font-size: 0.875rem;
-    line-height: 1.28;
     color: #FCE5D8;
 }
 
@@ -74,7 +89,7 @@
     background-color: #E57CD8;
     color: #FFF;
     text-align: center;
-    width:500px;
+    width:90%;
     border-radius: 25px;
     margin-top: 10px;
     box-sizing: border-box; 
@@ -90,7 +105,7 @@
 }
  .google{
      background-color: white;
-     width:250px;
+     width:45%;
      color: black;
      height: 50px;
      border-radius: 20px;
@@ -126,7 +141,7 @@
   
 
   .btn3log{
-    width: 500px;
+    width: 90%;
     font-family: 'GT Haptik Medium',sans-serif;
     font-size: 1rem;
     padding: 14px 50px;
