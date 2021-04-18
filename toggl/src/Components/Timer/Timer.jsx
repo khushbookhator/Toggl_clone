@@ -172,9 +172,9 @@ export const Timer=()=>{
             </div>
             <br/>
             <br/>
-            <div className={timerstyles.dayPart}>
-                <h5 style={{marginLeft:"20px", fontSize:"15px", fontWeight:"500"}}>Today</h5>
-                <p style={{marginRight:"140px", fontWeight:"bold"}}>
+            <div>
+                <p style={{marginLeft:"30px", marginBottom:"5px"}}>WEEKLY</p>
+                <p style={{marginLeft:"30px", marginBottom:"5px"}}>
                     {
                         getTime(task.reduce((acc, b) => acc + b.total_time, 0))
                     }

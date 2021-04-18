@@ -18,7 +18,7 @@ function Routes() {
                 <Route exact path="/">
                     <Home/>
                 </Route>
-                <PrivateRoute path="/timer">
+                <PrivateRoute exact path="/timer">
                 <div style={{
                     display:"flex"
                 }}>

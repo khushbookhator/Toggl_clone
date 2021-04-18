@@ -2,11 +2,12 @@ import React , { useRef, useState } from 'react'
 import loginstyles from './Login.module.css'
 import   {auth} from './firebase'
 import firebase from "firebase/app"
-import { useHistory } from 'react-router'
+import {  useHistory } from 'react-router'
 import { useDispatch } from 'react-redux'
 import { trackLogin, trackLogout } from './userSlice'
 import { Footer } from '../Home/HomeComponents/Footer'
 import { Navbar } from '../Home/HomeComponents/Navbar'
+import { Link } from 'react-router-dom';
 
 function Login(){
   const emailRef = useRef(null)
@@ -79,7 +80,7 @@ function Login(){
        </div>
        <div className={loginstyles.bottom}>
          <p>Don't have an account?</p>
-         <button>Sign up for free</button>
+         <Link to="/signup"><button className={loginstyles.linkbutton}>Sign up for free</button></Link>
          <br/><br/><br/>
        </div>
            <Footer/>

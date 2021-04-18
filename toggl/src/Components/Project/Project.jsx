@@ -143,7 +143,9 @@ function Project() {
                     <option>Archived</option>
                     <option>Both</option>
                 </select>
-                <p>Filter by: </p>
+                <p style={{
+                    marginTop:"10px"
+                }}>Filter by: </p>
                 <button>
                     <img className={projstyles.imgs} src="https://img.icons8.com/?id=11797&size=2x&color=000000" alt="user"/>
                     Client
@@ -220,10 +222,10 @@ function Project() {
                                     alignItems: "center"
                                 }}>
                                     <div style={{width:"180px"}}> {<FontAwesomeIcon style={{fontSize:"8px", marginRight:"10px", opacity:"0.5", marginLeft:"20px"}} icon={faCircle}/>} {item.project_name}</div>
-                                    <div style={{marginLeft:"300px"}}>{item.client}</div>
+                                    <div style={{marginLeft:"430px"}}>{item.client}</div>
                                     <div style={{width:"50px", marginLeft:"100px"}}>{
                                         Math.floor((task.filter((items) => items.project_name === item.project_name).reduce((acc, b) => acc + b.total_time, 0))/3600)} h</div>
-                                    <div style={{marginLeft:"80px", paddingLeft:"20px", boxSizing:"border-box"}}>{item.team}</div>
+                                    <div style={{marginLeft:"130px", paddingLeft:"20px", boxSizing:"border-box"}}>{item.team}</div>
                                     <span onClick={(e) => {e.preventDefault() ;e.stopPropagation(); handleShowListIcons(`deleteList${i}`)}} id={`${i}dot3btnProj`} className={projstyles.dot3btnProj}><FontAwesomeIcon style={{padding:"0px 10px"}} icon={faEllipsisV}/></span>
                                     <div style={{width:"150px", textAlign:"center"}} id={`deleteList${i}`} className={projstyles.delWaliList}>
                                         <button style={{color:"red" ,border:"none", outline:"none", fontSize:"16px", backgroundColor:"transparent", padding:"5px", paddingTop:"15px", cursor:"pointer"}} onClick={(e)=>{e.preventDefault(); e.stopPropagation(); handleDelete(item.id);}}>Delete</button>

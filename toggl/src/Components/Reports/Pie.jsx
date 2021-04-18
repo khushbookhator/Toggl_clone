@@ -41,6 +41,14 @@ export function PieCrt(){
                 </table>
             }
         </div>
+        <div>
+        <p style={{marginLeft:"30px", marginBottom:"5px", fontWeight:"600"}}>WEEKLY</p>
+        <h3 style={{marginLeft:"30px", marginBottom:"5px"}}>
+            {
+                getTime(task.reduce((acc, b) => acc + b.total_time, 0))
+            }
+        </h3>
+        </div>
         <div className={piestyle.piechrtcont}>
         <PieChart
             data={

@@ -56,13 +56,16 @@ function TimerData() {
             {
                 Object.keys(obj).map((itemss) => 
                 <>
-                    <div style={{display:"flex",justifyContent:"space-between",padding:"10px"}}>
-                        <h2>{itemss}</h2>
-                        <h2>
+                    <div style={{
+                        width:"95%",
+                        margin:"auto",
+                        display:"flex",justifyContent:"space-between",padding:"10px"}}>
+                        <h4>{itemss}</h4>
+                        <h4>
                             {
                                 getTime(task?.filter((it) => it.date === itemss).reduce((acc, b) => acc + b.total_time, 0))
                             }
-                        </h2>
+                        </h4>
                     </div>
                     {
                         task?.filter((items) => items.date === itemss).map((item,i) => {return(
@@ -96,7 +99,7 @@ function TimerData() {
                                         open={open}
                                         onClose={handleClose}>
                                         <MenuItem onClick={()=>handleDelete(item.id)}>
-                                          Delete{item.id}
+                                          Delete
                                         </MenuItem>
                                         <MenuItem onClick={handleClose}>
                                           <Link to="/projects">Go to project</Link>

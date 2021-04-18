@@ -2,15 +2,16 @@ import React, { useRef, useState } from 'react'
 import firebase from "firebase/app"
 import signstyles from './Signup.module.css'
 import {auth} from './firebase'
-import { useDispatch, useSelector } from 'react-redux';
-import { trackLogin, trackLogout } from './userSlice';
+import { useDispatch } from 'react-redux';
+import { trackLogin } from './userSlice';
 import { useHistory } from 'react-router';
 import { Navbar } from '../Home/HomeComponents/Navbar'
 import { Footer } from '../Home/HomeComponents/Footer'
+import { Link } from 'react-router-dom';
 
 function Signup(){
 
-  const [isHidden, setisHiddden] = useState(false);
+  const [isHidden, setisHiddden] = useState(true);
   const history = useHistory(null)
   const dispatch = useDispatch()
   const emailRef = useRef(null);
@@ -82,7 +83,7 @@ function Signup(){
                 </div>
             <div className={signstyles.bottom}>
                 <p>Have an Account already?</p>
-                <button>Login</button>
+                <Link to="/login"><button className={signstyles.linkbuttons}>Login</button></Link>
                 <br/><br/><br/>
             </div>
             <div>

@@ -36,7 +36,7 @@
     color: white;
     font-size: 25px;
 }
-.bottom > button {
+.linkbutton {
     width:15%;
     justify-content: center;
     height:45px;
