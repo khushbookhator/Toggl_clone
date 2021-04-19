@@ -51,7 +51,7 @@ export const StopWatch=({title, projname})=>{
         setStatus(false)
 
         const today = new Date()
-        const date = today.getFullYear()+"-" + (today.getMonth() + 1) + '-' + today.getDate();
+        const date = today.getDate() + "-0" + (today.getMonth() + 1) + "-" + today.getFullYear();
         const payload = {
             title: title,
             date : date,
@@ -68,11 +68,6 @@ export const StopWatch=({title, projname})=>{
         }
         dispatch(postTask(payload)).then(dispatch(getTask()))
     }
-
-    // React.useEffect(() => {
-    //     dispatch(getTask())
-    // },[handleReset])
-
     return(
         <div className={stylesStopwatch.container}>
             <h3>{getTime(time)}</h3>

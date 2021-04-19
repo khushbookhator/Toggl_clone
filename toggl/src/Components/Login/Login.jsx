@@ -1,95 +1,91 @@
+import React , { useRef, useState } from 'react'
+import loginstyles from './Login.module.css'
+import   {auth} from './firebase'
+import firebase from "firebase/app"
+import {  useHistory } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { trackLogin, trackLogout } from './userSlice'
+import { Footer } from '../Home/HomeComponents/Footer'
+import { Navbar } from '../Home/HomeComponents/Navbar'
+import { Link } from 'react-router-dom';
+
+function Login(){
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
+    const history  = useHistory()
+  const dispatch = useDispatch()
+  const signIn=(e)=>{
+    e.preventDefault();
+    auth.signInWithEmailAndPassword(
+       emailRef.current.value,
+       passwordRef.current.value 
+    ).then((authUser)=>{
+        dispatch(trackLogin(authUser))
+          history.push("/timer")
+    })
+  }
+  const handleGoogleSingIn =(e)=>{
+    e.preventDefault()
+    var provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+    .then((result) => {
+       const user = result.user;
+      dispatch(trackLogin(user))
+      history.push("/timer")
+    }).catch((error) => {
+      alert("wrong credentials")
+    });
+  
+  }
+  
+    return(
+        
+        <div className={loginstyles.cont}>
  
-   import React , { useState } from 'react'
-   import loginstyles from '../CSS/Login.module.css'
-   import   {auth, google} from '../firebase'
-   function Login(){
-   
-     
-     const [password, setPassword] = useState("null");
-     const [email, setEmail] = useState("null");
-      
-     const logingoogle = ()=>{
-       auth.signInWithPopup(google)
-       .then(resp => console.log(resp))
-       .catch((err) => console.log(err));
-     }
-   
-     async function  Register()
-     {
-       auth.createUserWithEmailAndPassword(email, password)
-
-         .then(function (response) {
-           console.log(response.user);
-         })
-         .catch(function (error) {
-           console.log(error);
-         })  
-     }
-
-    function Log(){
-       {
-          
-   
-           auth.createUserWithEmailAndPassword(email, password)
-   
-             .then(function (response) {
-               console.log(response.user);
-             })
-             .catch(function (error) {
-               console.log(error);
-             })
-         }
-    }
-   
-       return(
-           
-           <div className={loginstyles.body}>
-    
-    <div className={loginstyles.container}  >
-                 <img width="100%" height="450px"      src="https://public-assets.toggl.com/b/static/a848ad9070fcf959a459fa1e878d2abb/c0583/hero-laptops.jpg" alt="laptop"  />
-                 
-                 <div className={loginstyles.centered}>
-                 <h1 >Log in to your account</h1> 
-                 <h3 className={loginstyles.h3}>Let's get Tracking!</h3>
-                   </div>
-               </div>
-   
-   
-   
-       
-        <div>
-         
-      </div>
-            
-       <div className={loginstyles.main}>
-           
-         <form>
-   
-         <button className={loginstyles.google}  onClick={logingoogle}> <img className={loginstyles.googleimg} src="https://img.icons8.com/color/452/google-logo.png" alt="google"/>Signup via Google</button>
-                  <button className={loginstyles.google}> <img className={loginstyles.googleimg} src="https://cdn.iconscout.com/icon/free/png-256/apple-853-675472.png" alt="apple"/> Sign up via Apple</button>
-   
-             <div>
-             <label>Email </label><br/>
-           <input type="text" placeholder="Email" onChange={(e)=> setEmail(e.target.value)}/> 
+            <div className={loginstyles.wrap}  >
+              
+              <Navbar/>
+              {/* <img className={loginstyles.imgs}  src="https://public-assets.toggl.com/b/static/a848ad9070fcf959a459fa1e878d2abb/c0583/hero-laptops.jpg" alt="laptop"/> */}
             </div>
-    
-             <div>
-                 <label>Password</label><br/>
-                 <input type="text" placeholder="Password" onChange={(e)=> setPassword(e.target.value)}/>
-             </div>
-              <div style={{textAlign:"right", paddingTop:"50px", marginRight:"50px"}}>
-                   <span>Forgot Password?</span>
-              </div>
-             <div>
-   
-                  <button onClick={Register}>Log in</button>
-             </div>
-          </form>
-    </div>
-   
-   
+            <div className={loginstyles.centered}>
+              <h3 className={loginstyles.h2log} >Log in to your account</h3> 
+              <h3 className={loginstyles.h3log}>Let's get Tracking!</h3>
+            </div>
+         
+    <div className={loginstyles.main}>
+        
+      <form>
+
+            <div className={loginstyles.top}>
+              <button  onClick={handleGoogleSingIn} type="submit" className={loginstyles.google}  > <img className={loginstyles.googleimg} src="https://img.icons8.com/color/452/google-logo.png" alt="google"/>Signup via Google</button>
+               <button className={loginstyles.google}> <img className={loginstyles.googleimg} src="https://cdn.iconscout.com/icon/free/png-256/apple-853-675472.png" alt="apple"/> Sign up via Apple</button>
+            </div>
+            <br/><br/><br/><br/>
+          <div className={loginstyles.forms}>
+              <label>Email </label><br/>
+              <input type="text" placeholder="Email" ref={emailRef}/> <br/>
+              <label>Password</label><br/>
+              <input type="text" placeholder="Password" ref = {passwordRef}/>
+          </div>
+           <div style={{
+             textAlign:"right"
+           }}>
+                <span className={loginstyles.forgot}>Forgot Password?</span>
            </div>
-       )
-   }
-   
-   export {Login}
+           <br/>
+          <div>
+               <button  type="submit" className={loginstyles.btn2log} onClick={signIn}>Log in</button>
+          </div>
+       </form>
+       </div>
+       <div className={loginstyles.bottom}>
+         <p>Don't have an account?</p>
+         <Link to="/signup"><button className={loginstyles.linkbutton}>Sign up for free</button></Link>
+         <br/><br/><br/>
+       </div>
+           <Footer/>
+        </div>
+    )
+}
+
+export {Login}

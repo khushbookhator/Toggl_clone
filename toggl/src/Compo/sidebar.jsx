@@ -1,8 +1,21 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom"
+import { auth } from "../Components/Login/firebase";
+import { trackLogin, trackLogout } from "../Components/Login/userSlice";
 import barstyles from "./bar.module.css"
 
 function Sidebar() {
+    const dispatch =useDispatch()
+    const isAuth = useSelector(store=>store.user.isAuth)
+    const userEmail = useSelector(store=>store.user.userData.email)
+    const userName = useSelector(store=>store.user.userData.displayName)
+    const profilePic = useSelector(store=>store.user.userData.photoURL)
+    const userData = useSelector(store=>store.user.userData)
+    console.log(userData)
+    const handleLogout=()=>{
+        dispatch(trackLogout())
+    }
     return(
         <div className={barstyles.cont}>
             <div className={barstyles.panel}>
@@ -54,6 +67,31 @@ function Sidebar() {
                 <NavLink className={barstyles.links} to="/subscription">Subscription</NavLink>
             </div>
             <p>WORKSPACE</p>
+            <div style={{
+                display:"flex",
+                gap:"2px",
+                height:"40px"
+            }}>
+                <img style={{
+                    borderRadius:"50%",
+
+                }} src={profilePic} alt=""/>
+                <p style={{
+                    color:"white",
+                    marginTop:"5px"
+                }}>{userName}</p>
+            </div>
+                <button style={{
+                    background:"transparent",
+                    width:"80%",
+                    color:"white",
+                    margin:"auto",
+                    marginTop:"8px",
+                    border:"1px solid white",
+                    borderRadius:"5px",
+                    height:"35px"
+                }} onClick={handleLogout}>Sign Out</button>
+            
         </div>
     )
 }
