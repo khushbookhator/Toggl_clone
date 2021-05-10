@@ -1,6 +1,6 @@
 .bgpage{
     background-color: #fff8f7;
-    max-height:730px;
+    max-height:100vh;
     overflow-y:scroll;
     width:90%;
 }
