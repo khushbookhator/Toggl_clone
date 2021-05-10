@@ -44,7 +44,7 @@ function TimerData() {
         document.getElementById(`${i}dollarWalaIcon`).style.visibility = "visible";
     }
     const handleLeave = (i) => {
-        document.getElementById(i).style.backgroundColor = "#fff"
+        document.getElementById(i).style.backgroundColor ="#fff8f7"
         document.getElementById(`${i}dot3btn`).style.visibility = "hidden";
         document.getElementById(`${i}tagWalaIcon`).style.visibility = "hidden";
         document.getElementById(`${i}dollarWalaIcon`).style.visibility = "hidden";
