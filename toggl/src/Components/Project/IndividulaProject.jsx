@@ -16,7 +16,7 @@ function IndividualProject() {
     useEffect(() => {
         dispatch(getIndividualProject(id))
         dispatch(getTask())
-    },[])
+    },[dispatch, id])
 
     const individual = useSelector(state => state.project.individual)
 

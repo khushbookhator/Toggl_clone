@@ -16,7 +16,7 @@ export function PieCrt(){
     React.useEffect(() => {
         dispatch(getTask())
         dispatch(getProject())
-    },[])
+    },[dispatch])
     return(
         <>
         <div className={piestyle.tablecont}>

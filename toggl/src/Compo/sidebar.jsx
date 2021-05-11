@@ -1,14 +1,11 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom"
-import { auth } from "../Components/Login/firebase";
-import { trackLogin, trackLogout } from "../Components/Login/userSlice";
+import {trackLogout } from "../Components/Login/userSlice";
 import barstyles from "./bar.module.css"
 
 function Sidebar() {
     const dispatch =useDispatch()
-    const isAuth = useSelector(store=>store.user.isAuth)
-    const userEmail = useSelector(store=>store.user.userData.email)
     const userName = useSelector(store=>store.user.userData.displayName)
     const profilePic = useSelector(store=>store.user.userData.photoURL)
     const userData = useSelector(store=>store.user.userData)
