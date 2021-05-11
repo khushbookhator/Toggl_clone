@@ -10,7 +10,6 @@ import { Signup } from "../Components/Login/Signup";
 import { NotFound } from "../Components/NotFound";
 import { PrivateRoute } from "./PrivateRoute";
 
-
 function Routes() {
     return(
         <>
@@ -20,7 +19,9 @@ function Routes() {
                 </Route>
                 <PrivateRoute exact path="/timer">
                 <div style={{
-                    display:"flex"
+                    display:"flex",
+                    height:"100vh",
+                    overflowY:"hidden"
                 }}>
                     <Sidebar/>
                     <Timer/>
@@ -34,7 +35,9 @@ function Routes() {
                 </Route>
                 <PrivateRoute  exact path="/projects">
                 <div style={{
-                    display:"flex"
+                    display:"flex",
+                    height:"100vh",
+                    overflowY:"hidden"
                 }}>
                     <Sidebar/>
                     <Project/>
@@ -42,7 +45,9 @@ function Routes() {
                 </PrivateRoute>
                 <PrivateRoute exact path="/projects/:id">
                 <div style={{
-                    display:"flex"
+                    display:"flex",
+                    height:"100vh",
+                    overflowY:"hidden"
                 }}>
                     <Sidebar/>
                     <IndividualProject/>
@@ -50,7 +55,9 @@ function Routes() {
                 </PrivateRoute>
                 <PrivateRoute path="/reports">
                 <div style={{
-                    display:"flex"
+                    display:"flex",
+                    height:"100vh",
+                    overflowY:"hidden"
                 }}>
                     <Sidebar/>
                     <Reports/>

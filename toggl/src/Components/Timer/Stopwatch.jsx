@@ -21,6 +21,7 @@ export const StopWatch=({title, projname})=>{
         const st = startT.getHours() + ':' + startT.getMinutes();
         localStorage.setItem("startTime", st)
     };
+    const dispatch = useDispatch()
     useEffect(()=>{
         let a =Number(Date.now())-JSON.parse(localStorage.getItem("timer"))
         if(JSON.parse(localStorage.getItem("timer"))===undefined||JSON.parse(localStorage.getItem("timer"))===null){
@@ -35,10 +36,9 @@ export const StopWatch=({title, projname})=>{
             setStatus(true)
         }
         dispatch(getTask())
-    },[window.onload])
+    },[dispatch])
     
     
-    const dispatch = useDispatch()
     
     const handleReset=()=>{
         localStorage.setItem("totalTime",Math.floor((Number(Date.now())-JSON.parse(localStorage.getItem("timer")))/1000))

@@ -1,15 +1,10 @@
-import ReactFC from "react-fusioncharts";
-import { useSelector } from "react-redux";
-import { MyComponent, BarGraphData} from "./BarGraph"
+
+import { BarGraphData} from "./BarGraph"
 import { PieCrt } from "./Pie"
 import reportstyle from "./reports.module.css"
-import { getTime } from './../../Utils/timeFormat';
 
 
 function Reports() {
-
-    const task = useSelector(state => state.tasks.task)
-
     
     return(
         <>

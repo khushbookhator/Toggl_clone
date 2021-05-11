@@ -1,4 +1,3 @@
-import { DriveEtaRounded } from "@material-ui/icons"
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { getProject } from "../../Redux/Project/action"
@@ -14,7 +13,7 @@ function ProgressLine () {
     useEffect(()=>{
         dispatch(getProject())
         dispatch(getTask())
-    },[])
+    },[dispatch])
     return(
         <>
             <div style={{
