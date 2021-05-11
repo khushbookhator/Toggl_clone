@@ -47,7 +47,7 @@ function Project() {
     useEffect(() => {
         dispatch(getTask())
         dispatch(getProject())
-    },[])
+    },[dispatch])
 
     const handleHover = (i) => {
         document.getElementById(i).style.backgroundColor = "rgb(243, 243, 243)";

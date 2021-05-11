@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
 import Column2D from "fusioncharts/fusioncharts.charts";
@@ -13,7 +12,6 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 export const BarGraphData = () => {
   const today =  new Date()
   const task = useSelector(state => state.tasks.task)
-  const date = today.getFullYear()+"-" + (today.getMonth() + 1) + '-' + today.getDate();
 
   var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
   const chartData = [

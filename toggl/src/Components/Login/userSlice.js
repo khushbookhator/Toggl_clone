@@ -1,5 +1,4 @@
 import { loadData, saveData } from "../../Utils/LocalStorage"
-import { auth } from "./firebase"
 
 const LOGIN = "LOGIN"
 const LOGOUT = "LOGOUT"
