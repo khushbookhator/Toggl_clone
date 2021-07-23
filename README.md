@@ -31,6 +31,26 @@ To create this clone following Tech stack is used by contributors.
 * **web-vitals**
 ![alt Icons](https://i.imgur.com/rh3hvxm.png)
 ***
+## Landing Page :
+
+<img src="https://i.imgur.com/3b26TjZ.png" />
+
+## Login/SignUp Page :
+
+<img src="https://i.imgur.com/hZWqFMR.png" />
+
+## Timer Page :
+
+<img src="https://i.imgur.com/CX7SSll.png" />
+
+## Reports Page : 
+
+<img src="https://i.imgur.com/BCrfZu8.png" />
+
+## Project Page :
+
+<img src="https://i.imgur.com/WM13hhC.png" />
+
 
 *** 
 ## Team Members and Contributors
