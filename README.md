@@ -7,7 +7,7 @@ We have used Mock Server for API's which was created in JSON file.
 To create this clone following Tech stack is used by contributors.
 * **HTML**
 * **CSS**
-* **JAVA SCRICPT**
+* **JAVA SCRIPT**
 * **REACT**
 * **React Redux**
 * **React Router Dom**
