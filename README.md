@@ -51,6 +51,22 @@ To create this clone following Tech stack is used by contributors.
 
 <img src="https://i.imgur.com/WM13hhC.png" />
 
+## Installation and Setup Instructions
+Clone down this repository using this <a href="https://github.com/khushbookhator/Toggl_clone">link</a>
+
+You will need node and npm installed globally on your machine. 
+
+Inside Client install with npm
+
+
+```bash
+  npm install
+```
+
+To Run Test Suite: npm test To Start Server: npm start
+
+To Visit App: localhost:3000/
+
 
 *** 
 ## Team Members and Contributors
